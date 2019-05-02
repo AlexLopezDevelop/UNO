@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC97E8C322784B7A0091877C /* file.c in Sources */ = {isa = PBXBuildFile; fileRef = AC97E8C222784B7A0091877C /* file.c */; };
+		ACBD20B222775F800027CC2B /* cli.c in Sources */ = {isa = PBXBuildFile; fileRef = ACBD20B122775F800027CC2B /* cli.c */; };
 		ACEA98372270C86C00003F0F /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = ACEA98362270C86C00003F0F /* main.c */; };
 /* End PBXBuildFile section */
 
@@ -23,8 +25,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AC97E8C022784AD40091877C /* player01.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = player01.txt; sourceTree = "<group>"; };
+		AC97E8C122784B7A0091877C /* file.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = file.h; sourceTree = "<group>"; };
+		AC97E8C222784B7A0091877C /* file.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = file.c; sourceTree = "<group>"; };
+		AC97E8C4227855CA0091877C /* bot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bot.h; sourceTree = "<group>"; };
+		ACBD20AF22775DFC0027CC2B /* card.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = card.h; sourceTree = "<group>"; };
+		ACBD20B022775F800027CC2B /* cli.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cli.h; sourceTree = "<group>"; };
+		ACBD20B122775F800027CC2B /* cli.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cli.c; sourceTree = "<group>"; };
 		ACEA98332270C86C00003F0F /* UNO */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = UNO; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACEA98362270C86C00003F0F /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		ACEA983D2270C8BD00003F0F /* player.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = player.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +48,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC97E8BF22784A8F0091877C /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		ACEA982A2270C86C00003F0F = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +75,15 @@
 			isa = PBXGroup;
 			children = (
 				ACEA98362270C86C00003F0F /* main.c */,
+				ACBD20AF22775DFC0027CC2B /* card.h */,
+				ACBD20B022775F800027CC2B /* cli.h */,
+				ACBD20B122775F800027CC2B /* cli.c */,
+				AC97E8C122784B7A0091877C /* file.h */,
+				AC97E8C222784B7A0091877C /* file.c */,
+				ACEA983D2270C8BD00003F0F /* player.h */,
+				AC97E8C4227855CA0091877C /* bot.h */,
+				AC97E8C022784AD40091877C /* player01.txt */,
+				AC97E8BF22784A8F0091877C /* Data */,
 			);
 			path = UNO;
 			sourceTree = "<group>";
@@ -118,7 +144,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACBD20B222775F800027CC2B /* cli.c in Sources */,
 				ACEA98372270C86C00003F0F /* main.c in Sources */,
+				AC97E8C322784B7A0091877C /* file.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
