@@ -12,13 +12,25 @@
 #include <stdio.h>
 
 
-// Menu options
+// Main Menu options
 #define CLI_MENU_PLAY               1
 #define CLI_MENU_SHOW_STATISTICS    2
 #define CLI_MENU_EXIT               3
 
+// Game frist options
+#define CLI_GAME_FIRST_SEE_HAND     1
+#define CLI_GAME_FIRST_STEAL_CARD   2
 
-int CLI_menu(void); // Get access to call the function
+// Game second options
+#define CLI_GAME_SECOND_PLAY_CARD   1
+#define CLI_GAME_FIRST_STEAL_CARD   2
+
+
+int CLI_menu(void); // Start Menu
+
+int CLI_game_first(void); // Options: -Ver mano, -Robar carta
+
+int CLI_game_second(void); // Options: -Jugar carta, -Robar carta
 
 
 #endif /* cli_h */

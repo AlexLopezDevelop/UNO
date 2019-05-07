@@ -6,8 +6,6 @@
 //  Copyright © 2019 Alex Lopez. All rights reserved.
 //
 
-#include <stdlib.h>
-
 #include "file.h"
 
 #define MAXCHAR 100

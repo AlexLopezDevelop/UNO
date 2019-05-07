@@ -29,7 +29,7 @@ int main(int argc, const char * argv[]) {
             
             switch (option) {
                 case CLI_MENU_PLAY:
-                    
+                        CLI_game();
                     break;
                     
                 case CLI_MENU_SHOW_STATISTICS:

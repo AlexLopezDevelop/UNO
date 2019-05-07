@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AC97E8C322784B7A0091877C /* file.c in Sources */ = {isa = PBXBuildFile; fileRef = AC97E8C222784B7A0091877C /* file.c */; };
+		ACB06CB222807C5500514992 /* plist.c in Sources */ = {isa = PBXBuildFile; fileRef = ACB06CB122807C5500514992 /* plist.c */; };
 		ACBD20B222775F800027CC2B /* cli.c in Sources */ = {isa = PBXBuildFile; fileRef = ACBD20B122775F800027CC2B /* cli.c */; };
 		ACEA98372270C86C00003F0F /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = ACEA98362270C86C00003F0F /* main.c */; };
 /* End PBXBuildFile section */
@@ -29,6 +30,10 @@
 		AC97E8C122784B7A0091877C /* file.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = file.h; sourceTree = "<group>"; };
 		AC97E8C222784B7A0091877C /* file.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = file.c; sourceTree = "<group>"; };
 		AC97E8C4227855CA0091877C /* bot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bot.h; sourceTree = "<group>"; };
+		ACB06CB022807C5500514992 /* plist.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = plist.h; sourceTree = "<group>"; };
+		ACB06CB122807C5500514992 /* plist.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = plist.c; sourceTree = "<group>"; };
+		ACB06CB322807CE000514992 /* stack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stack.h; sourceTree = "<group>"; };
+		ACB06CB422807D1100514992 /* node.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = node.h; sourceTree = "<group>"; };
 		ACBD20AF22775DFC0027CC2B /* card.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = card.h; sourceTree = "<group>"; };
 		ACBD20B022775F800027CC2B /* cli.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cli.h; sourceTree = "<group>"; };
 		ACBD20B122775F800027CC2B /* cli.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cli.c; sourceTree = "<group>"; };
@@ -48,13 +53,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AC97E8BF22784A8F0091877C /* Data */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
 		ACEA982A2270C86C00003F0F = {
 			isa = PBXGroup;
 			children = (
@@ -83,7 +81,10 @@
 				ACEA983D2270C8BD00003F0F /* player.h */,
 				AC97E8C4227855CA0091877C /* bot.h */,
 				AC97E8C022784AD40091877C /* player01.txt */,
-				AC97E8BF22784A8F0091877C /* Data */,
+				ACB06CB022807C5500514992 /* plist.h */,
+				ACB06CB122807C5500514992 /* plist.c */,
+				ACB06CB322807CE000514992 /* stack.h */,
+				ACB06CB422807D1100514992 /* node.h */,
 			);
 			path = UNO;
 			sourceTree = "<group>";
@@ -144,6 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACB06CB222807C5500514992 /* plist.c in Sources */,
 				ACBD20B222775F800027CC2B /* cli.c in Sources */,
 				ACEA98372270C86C00003F0F /* main.c in Sources */,
 				AC97E8C322784B7A0091877C /* file.c in Sources */,
