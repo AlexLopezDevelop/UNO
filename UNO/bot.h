@@ -1,13 +1,10 @@
 //
-//  bot.h
-//  UNO
-//
-//  Created by Alex Lopez on 30/04/2019.
-//  Copyright © 2019 Alex Lopez. All rights reserved.
+// Created by Alex Lopez on 2019-05-07.
 //
 
-#ifndef bot_h
-#define bot_h
+#ifndef UNO_BOT_H
+#define UNO_BOT_H
+
 
 #include "card.h"
 
@@ -28,4 +25,4 @@ typedef struct {
 } BotStats;
 
 
-#endif /* bot_h */
+#endif //UNO_BOT_H

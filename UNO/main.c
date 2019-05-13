@@ -11,38 +11,56 @@
 #include "cli.h"
 #include "file.h"
 #include "player.h"
+#include "stats.h"
 
 
 int main(int argc, const char * argv[]) {
-    
+
     if (argc >= 3) { // Check if are 3 arguments or more
-        
+
         PlayerStats playerStats;
-        
-        FILE_export_player_stats(argv[1]);
-    
-        int option;
-        
+
+        int option, optionStats;
+
         do {
-            
+
             option = CLI_menu();
-            
+
             switch (option) {
+
                 case CLI_MENU_PLAY:
-                        CLI_game_first();
-                    break;
-                    
-                case CLI_MENU_SHOW_STATISTICS:
+
+                    CLI_game_first();
 
                     break;
-                    
+
+
+                case CLI_MENU_SHOW_STATISTICS:
+                    optionStats = CLI_stats();
+
+                    switch (optionStats) {
+                        case 1:
+                            STATS_show_player_stats(playerStats);
+                            break;
+                        case 2:
+
+                            break;
+                        case 3:
+                            // Back to menu
+                            break;
+                    }
+
+                    break;
+
+
                 case CLI_MENU_EXIT:
 
                     break;
-                    
+
+
             }
         } while(option != CLI_MENU_EXIT);
-        
+
     } else {
         printf("Error, numero de argumentos incorrecto\n\n");
         printf("Programa Finalizado...\n");

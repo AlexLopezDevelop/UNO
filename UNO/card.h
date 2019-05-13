@@ -1,13 +1,9 @@
 //
-//  card.h
-//  UNO
-//
-//  Created by Alex Lopez on 29/04/2019.
-//  Copyright © 2019 Alex Lopez. All rights reserved.
+// Created by Alex Lopez on 2019-05-07.
 //
 
-#ifndef card_h
-#define card_h
+#ifndef UNO_CARD_H
+#define UNO_CARD_H
 
 #define MAXCHAR 100
 
@@ -18,4 +14,4 @@ typedef struct {
 } Card;
 
 
-#endif /* card_h */
+#endif //UNO_CARD_H

@@ -1,14 +1,9 @@
 //
-//  cli.h
-//  UNO
-//
-//  Created by Alex Lopez on 29/04/2019.
-//  Copyright © 2019 Alex Lopez. All rights reserved.
+// Created by Alex Lopez on 2019-05-07.
 //
 
-#ifndef cli_h
-#define cli_h
-
+#ifndef UNO_CLI_H
+#define UNO_CLI_H
 #include <stdio.h>
 
 
@@ -25,6 +20,10 @@
 #define CLI_GAME_SECOND_PLAY_CARD   1
 #define CLI_GAME_FIRST_STEAL_CARD   2
 
+// Show stats options
+#define CLI_STATS_PLAYER            1
+#define CLI_STATS_BOTS              2
+#define CLI_STATS_BACK_MENU         3
 
 int CLI_menu(void); // Start Menu
 
@@ -32,5 +31,6 @@ int CLI_game_first(void); // Options: -Ver mano, -Robar carta
 
 int CLI_game_second(void); // Options: -Jugar carta, -Robar carta
 
+int CLI_stats(void);
 
-#endif /* cli_h */
+#endif //UNO_CLI_H

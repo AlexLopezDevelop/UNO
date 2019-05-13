@@ -1,13 +1,9 @@
 //
-//  node.h
-//  UNO
-//
-//  Created by Alex Lopez on 06/05/2019.
-//  Copyright © 2019 Alex Lopez. All rights reserved.
+// Created by Alex Lopez on 2019-05-07.
 //
 
-#ifndef node_h
-#define node_h
+#ifndef UNO_NODE_H
+#define UNO_NODE_H
 
 #include "card.h"
 
@@ -18,4 +14,4 @@ typedef struct _node {
 } Node;
 
 
-#endif /* node_h */
+#endif //UNO_NODE_H

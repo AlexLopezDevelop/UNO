@@ -1,13 +1,9 @@
 //
-//  jugador.h
-//  UNO
-//
-//  Created by Alex Lopez on 24/04/2019.
-//  Copyright © 2019 Alex Lopez. All rights reserved.
+// Created by Alex Lopez on 2019-05-07.
 //
 
-#ifndef jugador_h
-#define jugador_h
+#ifndef UNO_PLAYER_H
+#define UNO_PLAYER_H
 
 #include "card.h"
 
@@ -29,7 +25,8 @@ typedef struct {
     int wonGames;
     int lostGames;
     int cardsGames[MAXCARDSGAMES];
+    int cardsGamesSize;
 } PlayerStats;
 
 
-#endif /* jugador_h */
+#endif //UNO_PLAYER_H

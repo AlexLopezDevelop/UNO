@@ -1,13 +1,9 @@
 //
-//  plist.h
-//  UNO
-//
-//  Created by Alex Lopez on 06/05/2019.
-//  Copyright © 2019 Alex Lopez. All rights reserved.
+// Created by Alex Lopez on 2019-05-07.
 //
 
-#ifndef plist_h
-#define plist_h
+#ifndef UNO_PLIST_H
+#define UNO_PLIST_H
 
 #include <stdio.h>
 
@@ -30,4 +26,4 @@ Card PLIST_get(Stack);
 void PLIST_destroy(Stack *);
 
 
-#endif /* plist_h */
+#endif //UNO_PLIST_H
