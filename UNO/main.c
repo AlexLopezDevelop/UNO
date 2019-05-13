@@ -40,6 +40,7 @@ int main(int argc, const char * argv[]) {
 
                     switch (optionStats) {
                         case 1:
+                            playerStats = FILE_export_player_stats(argv[1]);
                             STATS_show_player_stats(playerStats);
                             break;
                         case 2:

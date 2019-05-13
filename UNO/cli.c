@@ -50,8 +50,8 @@ int CLI_game_second() {
 
 int CLI_stats() {
 
-    printf("\n UNO - Estadísticas \n");
-    printf("\n Elige el tipo de estadísticas a visualizar: \n");
+    printf("\nUNO - Estadísticas \n");
+    printf("\nElige el tipo de estadísticas a visualizar: \n");
     printf("1. Jugador\n");
     printf("2. Bots\n");
     printf("3. Regresar al menú principal\n");
