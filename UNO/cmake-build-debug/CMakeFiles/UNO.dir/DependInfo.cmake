@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_C
   "/Users/alexlopez/Documents/Programacion/C/UNO/UNO/cli.c" "/Users/alexlopez/Documents/Programacion/C/UNO/UNO/cmake-build-debug/CMakeFiles/UNO.dir/cli.c.o"
   "/Users/alexlopez/Documents/Programacion/C/UNO/UNO/file.c" "/Users/alexlopez/Documents/Programacion/C/UNO/UNO/cmake-build-debug/CMakeFiles/UNO.dir/file.c.o"
+  "/Users/alexlopez/Documents/Programacion/C/UNO/UNO/game.c" "/Users/alexlopez/Documents/Programacion/C/UNO/UNO/cmake-build-debug/CMakeFiles/UNO.dir/game.c.o"
   "/Users/alexlopez/Documents/Programacion/C/UNO/UNO/main.c" "/Users/alexlopez/Documents/Programacion/C/UNO/UNO/cmake-build-debug/CMakeFiles/UNO.dir/main.c.o"
   "/Users/alexlopez/Documents/Programacion/C/UNO/UNO/plist.c" "/Users/alexlopez/Documents/Programacion/C/UNO/UNO/cmake-build-debug/CMakeFiles/UNO.dir/plist.c.o"
   "/Users/alexlopez/Documents/Programacion/C/UNO/UNO/stats.c" "/Users/alexlopez/Documents/Programacion/C/UNO/UNO/cmake-build-debug/CMakeFiles/UNO.dir/stats.c.o"

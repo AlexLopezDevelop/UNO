@@ -12,6 +12,7 @@
 #include "file.h"
 #include "player.h"
 #include "stats.h"
+#include "game.h"
 
 
 int main(int argc, const char * argv[]) {
@@ -30,7 +31,7 @@ int main(int argc, const char * argv[]) {
 
                 case CLI_MENU_PLAY:
 
-                    CLI_game_first();
+                    GAME_start();
 
                     break;
 

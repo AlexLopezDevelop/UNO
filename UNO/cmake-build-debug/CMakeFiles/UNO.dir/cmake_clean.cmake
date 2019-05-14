@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/UNO.dir/plist.c.o"
   "CMakeFiles/UNO.dir/file.c.o"
   "CMakeFiles/UNO.dir/stats.c.o"
+  "CMakeFiles/UNO.dir/game.c.o"
   "UNO.pdb"
   "UNO"
 )

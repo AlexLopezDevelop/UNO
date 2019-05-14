@@ -177,6 +177,33 @@ file.c.s:
 	$(MAKE) -f CMakeFiles/UNO.dir/build.make CMakeFiles/UNO.dir/file.c.s
 .PHONY : file.c.s
 
+game.o: game.c.o
+
+.PHONY : game.o
+
+# target to build an object file
+game.c.o:
+	$(MAKE) -f CMakeFiles/UNO.dir/build.make CMakeFiles/UNO.dir/game.c.o
+.PHONY : game.c.o
+
+game.i: game.c.i
+
+.PHONY : game.i
+
+# target to preprocess a source file
+game.c.i:
+	$(MAKE) -f CMakeFiles/UNO.dir/build.make CMakeFiles/UNO.dir/game.c.i
+.PHONY : game.c.i
+
+game.s: game.c.s
+
+.PHONY : game.s
+
+# target to generate assembly for a file
+game.c.s:
+	$(MAKE) -f CMakeFiles/UNO.dir/build.make CMakeFiles/UNO.dir/game.c.s
+.PHONY : game.c.s
+
 main.o: main.c.o
 
 .PHONY : main.o
@@ -273,6 +300,9 @@ help:
 	@echo "... file.o"
 	@echo "... file.i"
 	@echo "... file.s"
+	@echo "... game.o"
+	@echo "... game.i"
+	@echo "... game.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

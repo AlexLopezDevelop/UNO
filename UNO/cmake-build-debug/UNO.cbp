@@ -96,6 +96,12 @@
 		<Unit filename="/Users/alexlopez/Documents/Programacion/C/UNO/UNO/file.h">
 			<Option target="UNO"/>
 		</Unit>
+		<Unit filename="/Users/alexlopez/Documents/Programacion/C/UNO/UNO/game.c">
+			<Option target="UNO"/>
+		</Unit>
+		<Unit filename="/Users/alexlopez/Documents/Programacion/C/UNO/UNO/game.h">
+			<Option target="UNO"/>
+		</Unit>
 		<Unit filename="/Users/alexlopez/Documents/Programacion/C/UNO/UNO/main.c">
 			<Option target="UNO"/>
 		</Unit>
