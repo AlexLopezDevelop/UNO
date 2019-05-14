@@ -5,16 +5,30 @@
 #include "game.h"
 
 
-char colors[MAXCARDSCOLORS][9] = {"amarillo", "verde", "rojo", "azul"};
-
 int numbers[MAXNUMCARDS] = {0, 13, 14, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
                 //Num cards:1,  1,  1, 2, 2, 2, 2, 2, 2, 2, 2, 2,  2,  2,  2
+
+char colors[MAXCARDSCOLORS][9] = {"amarillo", "verde", "rojo", "azul"};
 
 Card gameDeck[MAXCARDSGAMEDECK];
 
 Player player;
 
-int GAME_generate_game_stacks() {
+int GAME_shuffle_main_stack() {
+
+    Card temp;
+    int j;
+
+    for (int i = 0; i < MAXCARDSGAMEDECK; i++) {
+
+        j = (rand()%MAXCARDSGAMEDECK) + 1;
+        temp = gameDeck[i];
+        gameDeck[i] = gameDeck[j];
+        gameDeck[j] = temp;
+    }
+}
+
+int GAME_generate_main_stack() {
 
         int cardIndex = 0;
 
@@ -45,12 +59,9 @@ int GAME_generate_game_stacks() {
 
 int GAME_generate_stacks() {
 
-    GAME_generate_game_stacks();
+    GAME_generate_main_stack();
 
-    for (int i = 0; i < 108; i++) { // Print cards loaded
-        printf("%s: %d\n", gameDeck[i].color, gameDeck[i].number);
-    }
-
+    GAME_shuffle_main_stack();
 }
 
 int GAME_start() {
