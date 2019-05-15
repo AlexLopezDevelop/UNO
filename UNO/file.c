@@ -7,11 +7,13 @@
 //
 
 #include "file.h"
+#include "game.h"
 
 #define numDataByBot 3
+#define BOTMAXSTATUS "Agresivo"
 
 
-int FILE_export_bots_config(char nameFile[]) {
+int FILE_export_bots_config(char nameFile[], GamePlayers gamePlayers) {
 
     // Opening file
 
@@ -53,21 +55,28 @@ int FILE_export_bots_config(char nameFile[]) {
 
                             case 0: // Bot name
 
-
+                                stpcpy(gamePlayers.bots[i].name, lineFile);
 
                                 break;
 
 
                             case 1: // Aggressive or not
 
+                                if (strcmp(lineFile, BOTMAXSTATUS) == 0) { // Aggressive
 
+                                    gamePlayers.bots[i].status = 1;
+
+                                } else {
+
+                                    gamePlayers.bots[i].status = 0;
+                                }
 
                                 break;
 
 
                             case 2: // Cards
 
-
+                                gamePlayers.bots[i].cardsAvailable = lineFile;
 
                                 break;
                         }

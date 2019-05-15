@@ -12,9 +12,7 @@ char colors[MAXCARDSCOLORS][9] = {"amarillo", "verde", "rojo", "azul"};
 
 Card gameDeck[MAXCARDSGAMEDECK];
 
-Player player;
-
-Bot bots[MAXBOTSGAME]; // Array bots for game
+GamePlayers gamePlayers;
 
 
 int GAME_shuffle_main_stack() {
@@ -60,10 +58,6 @@ int GAME_generate_main_stack() {
         }
 }
 
-int GAME_load_bots() {
-
-}
-
 int GAME_generate_stacks() {
 
     GAME_generate_main_stack();
@@ -71,11 +65,11 @@ int GAME_generate_stacks() {
     GAME_shuffle_main_stack();
 }
 
-int GAME_start() {
+int GAME_start(char nameFileBots[]) {
+
+    FILE_export_bots_config(nameFileBots, gamePlayers); // Load bots conf
 
     GAME_generate_stacks();
-
-    GAME_load_bots;
 
     CLI_game_first();
 

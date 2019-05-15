@@ -19,6 +19,11 @@
 #define MAXCARDSCOLORS   4
 
 
+typedef struct {
+    Bot bots[MAXBOTSGAME]; // Array bots for game
+    Player player;
+}GamePlayers;
+
 int GAME_start();
 
 
