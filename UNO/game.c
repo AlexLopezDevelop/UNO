@@ -14,6 +14,9 @@ Card gameDeck[MAXCARDSGAMEDECK];
 
 Player player;
 
+Bot bots[MAXBOTSGAME]; // Array bots for game
+
+
 int GAME_shuffle_main_stack() {
 
     Card temp;
@@ -57,6 +60,10 @@ int GAME_generate_main_stack() {
         }
 }
 
+int GAME_load_bots() {
+
+}
+
 int GAME_generate_stacks() {
 
     GAME_generate_main_stack();
@@ -67,6 +74,8 @@ int GAME_generate_stacks() {
 int GAME_start() {
 
     GAME_generate_stacks();
+
+    GAME_load_bots;
 
     CLI_game_first();
 

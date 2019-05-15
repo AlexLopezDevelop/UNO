@@ -7,20 +7,21 @@
 
 
 #include "card.h"
+#include "file.h"
 
-#define MAXCHAR 100
-#define MAXDECK 50
+#define MAXCHAR     100
+#define MAXDECK     50
 
 // Struct - Bot in game
 typedef struct {
     Card deck[MAXDECK];
     int cardsAvailable;
-    int rager;
+    int status; // 0: Normal, 1: Aggressive
 } Bot;
 
 typedef struct {
     char name[MAXCHAR];
-    char status[MAXCHAR];
+    int status[MAXCHAR];
     int cards;
 } BotStats;
 

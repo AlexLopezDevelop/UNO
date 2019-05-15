@@ -12,8 +12,12 @@
 #include "player.h"
 #include "bot.h"
 
+#define MAXCHAR 100
+
 
 PlayerStats FILE_export_player_stats();
+
+int FILE_export_bots_config();
 
 
 #endif //UNO_FILE_H

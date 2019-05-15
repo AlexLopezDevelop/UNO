@@ -10,8 +10,10 @@ CMakeFiles/UNO.dir/file.c.o: ../file.c
 CMakeFiles/UNO.dir/file.c.o: ../file.h
 CMakeFiles/UNO.dir/file.c.o: ../player.h
 
+CMakeFiles/UNO.dir/game.c.o: ../bot.h
 CMakeFiles/UNO.dir/game.c.o: ../card.h
 CMakeFiles/UNO.dir/game.c.o: ../cli.h
+CMakeFiles/UNO.dir/game.c.o: ../file.h
 CMakeFiles/UNO.dir/game.c.o: ../game.c
 CMakeFiles/UNO.dir/game.c.o: ../game.h
 CMakeFiles/UNO.dir/game.c.o: ../player.h

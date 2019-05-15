@@ -30,7 +30,7 @@ int main(int argc, const char * argv[]) {
             switch (option) {
 
                 case CLI_MENU_PLAY:
-
+                    FILE_export_bots_config(argv[2]); // Load bots conf
                     GAME_start();
 
                     break;

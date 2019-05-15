@@ -6,25 +6,29 @@
 
 #IncludeRegexTransform: 
 
+/Users/alexlopez/Documents/Programacion/C/UNO/UNO/bot.h
+card.h
+/Users/alexlopez/Documents/Programacion/C/UNO/UNO/card.h
+file.h
+/Users/alexlopez/Documents/Programacion/C/UNO/UNO/file.h
+
 /Users/alexlopez/Documents/Programacion/C/UNO/UNO/card.h
 
-/Users/alexlopez/Documents/Programacion/C/UNO/UNO/cli.h
+/Users/alexlopez/Documents/Programacion/C/UNO/UNO/file.c
+file.h
+/Users/alexlopez/Documents/Programacion/C/UNO/UNO/file.h
+
+/Users/alexlopez/Documents/Programacion/C/UNO/UNO/file.h
 stdio.h
 -
-
-/Users/alexlopez/Documents/Programacion/C/UNO/UNO/game.c
-game.h
-/Users/alexlopez/Documents/Programacion/C/UNO/UNO/game.h
-
-/Users/alexlopez/Documents/Programacion/C/UNO/UNO/game.h
 stdlib.h
 -
 string.h
 -
-cli.h
-/Users/alexlopez/Documents/Programacion/C/UNO/UNO/cli.h
 player.h
 /Users/alexlopez/Documents/Programacion/C/UNO/UNO/player.h
+bot.h
+/Users/alexlopez/Documents/Programacion/C/UNO/UNO/bot.h
 
 /Users/alexlopez/Documents/Programacion/C/UNO/UNO/player.h
 card.h
