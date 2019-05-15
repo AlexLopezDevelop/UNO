@@ -14,9 +14,15 @@ file.h
 
 /Users/alexlopez/Documents/Programacion/C/UNO/UNO/card.h
 
+/Users/alexlopez/Documents/Programacion/C/UNO/UNO/cli.h
+stdio.h
+-
+
 /Users/alexlopez/Documents/Programacion/C/UNO/UNO/file.c
 file.h
 /Users/alexlopez/Documents/Programacion/C/UNO/UNO/file.h
+game.h
+/Users/alexlopez/Documents/Programacion/C/UNO/UNO/game.h
 
 /Users/alexlopez/Documents/Programacion/C/UNO/UNO/file.h
 stdio.h
@@ -29,6 +35,18 @@ player.h
 /Users/alexlopez/Documents/Programacion/C/UNO/UNO/player.h
 bot.h
 /Users/alexlopez/Documents/Programacion/C/UNO/UNO/bot.h
+
+/Users/alexlopez/Documents/Programacion/C/UNO/UNO/game.h
+stdlib.h
+-
+string.h
+-
+cli.h
+/Users/alexlopez/Documents/Programacion/C/UNO/UNO/cli.h
+player.h
+/Users/alexlopez/Documents/Programacion/C/UNO/UNO/player.h
+file.h
+/Users/alexlopez/Documents/Programacion/C/UNO/UNO/file.h
 
 /Users/alexlopez/Documents/Programacion/C/UNO/UNO/player.h
 card.h

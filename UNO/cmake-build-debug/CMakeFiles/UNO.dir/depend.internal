@@ -7,8 +7,10 @@ CMakeFiles/UNO.dir/cli.c.o
 CMakeFiles/UNO.dir/file.c.o
  /Users/alexlopez/Documents/Programacion/C/UNO/UNO/bot.h
  /Users/alexlopez/Documents/Programacion/C/UNO/UNO/card.h
+ /Users/alexlopez/Documents/Programacion/C/UNO/UNO/cli.h
  /Users/alexlopez/Documents/Programacion/C/UNO/UNO/file.c
  /Users/alexlopez/Documents/Programacion/C/UNO/UNO/file.h
+ /Users/alexlopez/Documents/Programacion/C/UNO/UNO/game.h
  /Users/alexlopez/Documents/Programacion/C/UNO/UNO/player.h
 CMakeFiles/UNO.dir/game.c.o
  /Users/alexlopez/Documents/Programacion/C/UNO/UNO/bot.h
