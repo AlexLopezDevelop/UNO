@@ -13,8 +13,8 @@
 #define CLI_MENU_EXIT               3
 
 // Game frist options
-#define CLI_GAME_FIRST_SEE_HAND     1
-#define CLI_GAME_FIRST_STEAL_CARD   2
+#define CLI_GAME_FIRST_SEE_HAND     'A'
+#define CLI_GAME_FIRST_STEAL_CARD   'B'
 
 // Game second options
 #define CLI_GAME_SECOND_PLAY_CARD   1
@@ -27,9 +27,9 @@
 
 int CLI_menu(void); // Start Menu
 
-int CLI_game_first(void); // Options: -Ver mano, -Robar carta
+char CLI_game_first(void); // Options: -Ver mano, -Robar carta
 
-int CLI_game_second(void); // Options: -Jugar carta, -Robar carta
+char CLI_game_second(void); // Options: -Jugar carta, -Robar carta
 
 int CLI_stats(void);
 

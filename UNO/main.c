@@ -15,10 +15,12 @@
 #include "game.h"
 #include "bot.h"
 
+#define MAXARGUMENTS 3
+
 
 int main(int argc, const char * argv[]) {
 
-    if (argc >= 3) { // Check if are 3 arguments or more
+    if (argc >= MAXARGUMENTS) { // Check if are 3 arguments or more
 
         PlayerStats playerStats;
 

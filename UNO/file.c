@@ -9,15 +9,12 @@
 #include "file.h"
 #include "game.h"
 
-#define numDataByBot 3
-#define BOTMAXSTATUS "Agresivo"
-
 
 int FILE_export_bots_config(char nameFile[], GamePlayers gamePlayers) {
 
     // Opening file
 
-    FILE * dataFile = fopen(nameFile, "r");
+    FILE *dataFile = fopen(nameFile, "r");
 
     if (dataFile == NULL) {
 
@@ -42,46 +39,42 @@ int FILE_export_bots_config(char nameFile[], GamePlayers gamePlayers) {
 
             if (aux == 0) { // Num of bots
 
-                numBots = atoi(lineFile);
+                gamePlayers.numBots = atoi(lineFile);
 
             } else {
-                        switch (aux) {
 
-                            case 1: // Bot name
+                switch (aux) {
 
-                                stpcpy(gamePlayers.bots[i].name, lineFile);
-                                printf("Name: %s, i: %d\n", gamePlayers.bots[i].name, i);
+                    case 1: // Bot name
 
-                                break;
+                        stpcpy(gamePlayers.bots[i].name, lineFile);
 
-
-                            case 2: // Aggressive or not
-
-                                if (strcmp(lineFile, "Agresivo") == 0) { // Aggressive
-
-                                    gamePlayers.bots[i].status = 1;
-
-                                } else {
-
-                                    gamePlayers.bots[i].status = 0;
-                                }
-                                printf("Status: %d\n", gamePlayers.bots[i].status);
-
-                                break;
+                        break;
 
 
-                            case 3: // Cards
-                                printf("test: %s\n", lineFile);
+                    case 2: // Aggressive or not
 
-                                gamePlayers.bots[i].cardsAvailable = atoi(lineFile);
+                        if (strcmp(lineFile, "Agresivo") == 0) { // Aggressive
 
-                                printf("Cards: %d\n", gamePlayers.bots[i].cardsAvailable);
+                            gamePlayers.bots[i].status = 1;
 
-                                aux = 0;
-                                i++;
+                        } else {
 
-                                break;
+                            gamePlayers.bots[i].status = 0;
                         }
+
+                        break;
+
+
+                    case 3: // Cards
+
+                        gamePlayers.bots[i].cardsAvailable = atoi(lineFile);
+
+                        aux = 0;
+                        i++;
+
+                        break;
+                }
             }
 
             aux++;
@@ -93,11 +86,6 @@ int FILE_export_bots_config(char nameFile[], GamePlayers gamePlayers) {
         }
 
         fclose(dataFile);
-
-    }
-
-    for (int i = 0; i < 3; i++) {
-        printf("\n %s - %d - %d \n", gamePlayers.bots[i].name, gamePlayers.bots[i].cardsAvailable, gamePlayers.bots[i].status);
     }
 
     return 1;
@@ -109,7 +97,7 @@ PlayerStats FILE_export_player_stats(char nameFile[]) {
 
     // Opening file
 
-    FILE * dataFile = fopen(nameFile, "r");
+    FILE *dataFile = fopen(nameFile, "r");
 
     if (dataFile == NULL) {
 
@@ -124,7 +112,7 @@ PlayerStats FILE_export_player_stats(char nameFile[]) {
         char lineFile[MAXCHAR];
 
         int aux = 0;
-        int i   = 0;
+        int i = 0;
 
         do {
 

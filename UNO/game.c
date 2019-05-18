@@ -4,6 +4,8 @@
 
 #include "game.h"
 
+#include <ctype.h>
+
 
 int numbers[MAXNUMCARDS] = {0, 13, 14, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
                 //Num cards:1,  1,  1, 2, 2, 2, 2, 2, 2, 2, 2, 2,  2,  2,  2
@@ -65,12 +67,46 @@ int GAME_generate_stacks() {
     GAME_shuffle_main_stack();
 }
 
-int GAME_start(char nameFileBots[]) {
+int GAME_configuration(char nameFileBots[]) {
 
-    FILE_export_bots_config(nameFileBots, gamePlayers); // Load bots conf
+    if (FILE_export_bots_config(nameFileBots, gamePlayers) == 0 ) { // Load bots conf
+        return 0;
+    }
 
     GAME_generate_stacks();
 
-    CLI_game_first();
+    return 1;
+}
+
+int GAME_start(char nameFileBots[]) {
+
+    if (GAME_configuration(nameFileBots) == 0) {
+        return 0;
+    }
+
+    char optionSelected;
+
+    do {
+
+        optionSelected = toupper(CLI_game_first());
+        printf("Selected: %c\n", optionSelected);
+
+        switch (optionSelected) {
+
+            case 'A':
+
+                printf("\nA selected\n");
+
+                break;
+
+
+            case CLI_GAME_FIRST_STEAL_CARD:
+
+                printf("\nA selected\n");
+
+                break;
+        }
+
+    } while (optionSelected != 'C');
 
 }

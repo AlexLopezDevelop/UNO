@@ -11,9 +11,9 @@
 #include "cli.h"
 
 
-int option;
-
 int CLI_menu() {
+
+    int option;
 
     //Print menu
     printf("1. Jugar\n");
@@ -26,18 +26,23 @@ int CLI_menu() {
     return option;
 }
 
-int CLI_game_first() {
+char CLI_game_first() {
+
+    int option;
 
     printf("A. Ver mano\n");
     printf("B. Robar carta\n");
     printf("\nOpción: ");
 
-    scanf("%d", &option);
+    //scanf("%[^\\n]", &option)
+    option = getchar();
 
     return option;
 }
 
-int CLI_game_second() {
+char CLI_game_second() {
+
+    int option;
 
     printf("A. Jugar carta\n");
     printf("B. Robar carta\n");
@@ -49,6 +54,8 @@ int CLI_game_second() {
 }
 
 int CLI_stats() {
+
+    int option;
 
     printf("\nUNO - Estadísticas \n");
     printf("\nElige el tipo de estadísticas a visualizar: \n");

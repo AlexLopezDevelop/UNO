@@ -21,6 +21,7 @@
 
 typedef struct {
     Bot bots[MAXBOTSGAME]; // Array bots for game
+    int numBots;
     Player player;
 }GamePlayers;
 
