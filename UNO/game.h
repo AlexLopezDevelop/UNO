@@ -13,10 +13,11 @@
 #include "file.h"
 
 
-#define MAXCARDSGAMEDECK 108
-#define MAXNUMCARDS      15
-#define MAXBOTSGAME      10
-#define MAXCARDSCOLORS   4
+#define MAXCARDSGAMEDECK    108
+#define MAXNUMCARDS         15
+#define MAXBOTSGAME         10
+#define MAXCARDSCOLORS      4
+#define QUANTITYCARDSPLAYER 7
 
 
 typedef struct {

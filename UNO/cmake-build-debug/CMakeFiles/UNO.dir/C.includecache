@@ -14,25 +14,9 @@ file.h
 
 /Users/alexlopez/Documents/Programacion/C/UNO/UNO/card.h
 
-/Users/alexlopez/Documents/Programacion/C/UNO/UNO/cli.c
-stdio.h
--
-stdlib.h
--
-string.h
--
-cli.h
-/Users/alexlopez/Documents/Programacion/C/UNO/UNO/cli.h
-
 /Users/alexlopez/Documents/Programacion/C/UNO/UNO/cli.h
 stdio.h
 -
-
-/Users/alexlopez/Documents/Programacion/C/UNO/UNO/file.c
-file.h
-/Users/alexlopez/Documents/Programacion/C/UNO/UNO/file.h
-game.h
-/Users/alexlopez/Documents/Programacion/C/UNO/UNO/game.h
 
 /Users/alexlopez/Documents/Programacion/C/UNO/UNO/file.h
 stdio.h
@@ -49,6 +33,10 @@ bot.h
 /Users/alexlopez/Documents/Programacion/C/UNO/UNO/game.c
 game.h
 /Users/alexlopez/Documents/Programacion/C/UNO/UNO/game.h
+stack.h
+/Users/alexlopez/Documents/Programacion/C/UNO/UNO/stack.h
+plist.h
+/Users/alexlopez/Documents/Programacion/C/UNO/UNO/plist.h
 ctype.h
 -
 
@@ -64,27 +52,23 @@ player.h
 file.h
 /Users/alexlopez/Documents/Programacion/C/UNO/UNO/file.h
 
-/Users/alexlopez/Documents/Programacion/C/UNO/UNO/main.c
-stdio.h
--
-cli.h
-/Users/alexlopez/Documents/Programacion/C/UNO/UNO/cli.h
-file.h
-/Users/alexlopez/Documents/Programacion/C/UNO/UNO/file.h
-player.h
-/Users/alexlopez/Documents/Programacion/C/UNO/UNO/player.h
-stats.h
-/Users/alexlopez/Documents/Programacion/C/UNO/UNO/stats.h
-game.h
-/Users/alexlopez/Documents/Programacion/C/UNO/UNO/game.h
-bot.h
-/Users/alexlopez/Documents/Programacion/C/UNO/UNO/bot.h
+/Users/alexlopez/Documents/Programacion/C/UNO/UNO/node.h
+card.h
+/Users/alexlopez/Documents/Programacion/C/UNO/UNO/card.h
 
 /Users/alexlopez/Documents/Programacion/C/UNO/UNO/player.h
 card.h
 /Users/alexlopez/Documents/Programacion/C/UNO/UNO/card.h
 
-/Users/alexlopez/Documents/Programacion/C/UNO/UNO/stats.h
-player.h
-/Users/alexlopez/Documents/Programacion/C/UNO/UNO/player.h
+/Users/alexlopez/Documents/Programacion/C/UNO/UNO/plist.h
+stdio.h
+-
+card.h
+/Users/alexlopez/Documents/Programacion/C/UNO/UNO/card.h
+stack.h
+/Users/alexlopez/Documents/Programacion/C/UNO/UNO/stack.h
+
+/Users/alexlopez/Documents/Programacion/C/UNO/UNO/stack.h
+node.h
+/Users/alexlopez/Documents/Programacion/C/UNO/UNO/node.h
 

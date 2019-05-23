@@ -19,7 +19,10 @@ CMakeFiles/UNO.dir/game.c.o
  /Users/alexlopez/Documents/Programacion/C/UNO/UNO/file.h
  /Users/alexlopez/Documents/Programacion/C/UNO/UNO/game.c
  /Users/alexlopez/Documents/Programacion/C/UNO/UNO/game.h
+ /Users/alexlopez/Documents/Programacion/C/UNO/UNO/node.h
  /Users/alexlopez/Documents/Programacion/C/UNO/UNO/player.h
+ /Users/alexlopez/Documents/Programacion/C/UNO/UNO/plist.h
+ /Users/alexlopez/Documents/Programacion/C/UNO/UNO/stack.h
 CMakeFiles/UNO.dir/main.c.o
  /Users/alexlopez/Documents/Programacion/C/UNO/UNO/bot.h
  /Users/alexlopez/Documents/Programacion/C/UNO/UNO/card.h

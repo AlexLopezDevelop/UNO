@@ -3,10 +3,12 @@
 //
 
 #include "game.h"
+#include "stack.h"
+#include "plist.h"
 
 #include <ctype.h>
 
-
+// -------------------------- Aux array -------------------------------- (Can be replaced directly by gameStack)
 int numbers[MAXNUMCARDS] = {0, 13, 14, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
                 //Num cards:1,  1,  1, 2, 2, 2, 2, 2, 2, 2, 2, 2,  2,  2,  2
 
@@ -14,8 +16,28 @@ char colors[MAXCARDSCOLORS][9] = {"amarillo", "verde", "rojo", "azul"};
 
 Card gameDeck[MAXCARDSGAMEDECK];
 
+// -------------------------- End Aux array --------------------------------
+
+Stack gameStack;
+
 GamePlayers gamePlayers;
 
+int GAME_deal_cards() {
+
+    gameStack = PLIST_create(); // Initialize with phantom node
+
+    for (int i = 0; i < MAXCARDSGAMEDECK; i++) { // Transfer data from aux array to gameStack
+
+        PLIST_insert(&gameStack, gameDeck[i]);
+
+    }
+    
+    /*for (int i = 0; i < QUANTITYCARDSPLAYER; i++) { // Quantity cards for player
+
+        gamePlayers.player.deck[0] = gameDeck[0];
+
+    }*/
+}
 
 int GAME_shuffle_main_stack() {
 
@@ -84,6 +106,8 @@ int GAME_start(char nameFileBots[]) {
         return 0;
     }
 
+    GAME_deal_cards();
+
     char optionSelected;
 
     do {
@@ -97,7 +121,8 @@ int GAME_start(char nameFileBots[]) {
 
             case CLI_GAME_FIRST_SEE_HAND:
 
-                printf("\nA selected\n");
+
+                CLI_game_second();
 
                 break;
 
