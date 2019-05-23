@@ -42,15 +42,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0c40cc86-3124-461b-88a3-d3c49266c4c7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/UNO.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/UNO.dir/C.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/UNO.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/UNO.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/UNO.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/UNO.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/UNO.dir/file.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/UNO.dir/file.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/UNO.dir/game.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/UNO.dir/game.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UNO" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/UNO" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game.c" beforeDir="false" afterPath="$PROJECT_DIR$/game.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game.h" beforeDir="false" afterPath="$PROJECT_DIR$/game.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plist.c" beforeDir="false" afterPath="$PROJECT_DIR$/plist.c" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -110,8 +103,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/game.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="35" column="61" selection-start-line="35" selection-start-column="61" selection-end-line="35" selection-end-column="61" />
+            <state relative-caret-position="301">
+              <caret line="35" column="8" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
               <folding>
                 <element signature="e#47#64#0" expanded="true" />
               </folding>
@@ -131,8 +124,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stack.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+            <state>
+              <caret column="2" lean-forward="true" selection-start-column="2" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -158,8 +151,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/plist.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="30" column="23" lean-forward="true" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
+            <state relative-caret-position="156">
+              <caret line="47" selection-start-line="47" selection-end-line="47" />
               <folding>
                 <element signature="e#125#144#0" expanded="true" />
               </folding>
@@ -278,12 +271,12 @@
       <workItem from="1558634012929" duration="14000" />
       <workItem from="1558634060423" duration="16000" />
       <workItem from="1558634097373" duration="95000" />
-      <workItem from="1558638377380" duration="3800000" />
+      <workItem from="1558638377380" duration="5508000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41415000" />
+    <option name="totallyTimeSpent" value="43123000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -303,14 +296,14 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32513368" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32513368" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32941177" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
       <window_info anchor="bottom" id="TeamCity" order="8" weight="0.32941177" />
-      <window_info active="true" anchor="bottom" id="Messages" order="9" visible="true" weight="0.32834226" />
+      <window_info anchor="bottom" id="Messages" order="9" weight="0.32834226" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32941177" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="12" weight="0.32941177" />
@@ -435,8 +428,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/plist.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="30" column="23" lean-forward="true" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
+        <state relative-caret-position="156">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
           <folding>
             <element signature="e#125#144#0" expanded="true" />
           </folding>
@@ -459,8 +452,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/stack.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+        <state>
+          <caret column="2" lean-forward="true" selection-start-column="2" selection-end-column="2" />
         </state>
       </provider>
     </entry>
@@ -473,8 +466,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/game.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="35" column="61" selection-start-line="35" selection-start-column="61" selection-end-line="35" selection-end-column="61" />
+        <state relative-caret-position="301">
+          <caret line="35" column="8" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
           <folding>
             <element signature="e#47#64#0" expanded="true" />
           </folding>

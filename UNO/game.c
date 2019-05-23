@@ -31,12 +31,13 @@ int GAME_deal_cards() {
         PLIST_insert(&gameStack, gameDeck[i]);
 
     }
-    
-    /*for (int i = 0; i < QUANTITYCARDSPLAYER; i++) { // Quantity cards for player
 
-        gamePlayers.player.deck[0] = gameDeck[0];
-
-    }*/
+    for (int i = 0; i < QUANTITYCARDSPLAYER; i++) { // Quantity cards for player
+        
+        printf("%d - %s \n", gameStack.first->next->card.number, gameStack.first->next->card.color);
+        gamePlayers.player.deck[i] = gameStack.first->next->card;
+        PLIST_remove(&gameStack); // Remove card given to player
+    }
 }
 
 int GAME_shuffle_main_stack() {

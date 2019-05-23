@@ -41,34 +41,15 @@ int PLIST_insert(Stack * stack, Card card) {
 }
 
 int PLIST_remove(Stack * stack) {
-    Node * tmp = stack->last;
+    Node * tmp = stack->first->next;
 
-    if (stack->last == stack->first->next && stack->last->next == NULL) { // Only one node
-        stack->first->next = NULL;
-        stack->last = stack->first;
-
-    } else if (stack->last == stack->first->next) { // delete first node
-
-        stack->last = stack->first;
-        printf("text: %s", stack->last->card.number);
-        stack->last->next = stack->last->next->next;
-        stack->last = stack->last->next;
-        free(tmp);
-
-    } else if (stack->last->next != NULL) { // Middle nodes
-
-        PLIST_previous(stack);
-        stack->last->next = stack->last->next->next;
-        free(tmp);
-
-    } else { // Last node
-
-        PLIST_previous(stack); // = playlist->last -1, point to previous node
-        stack->last->next = NULL;
-    }
+    stack->first->next = stack->first->next->next;
+    free(tmp);
 
     return 1;
 }
+
+
 
 int PLIST_next(Stack * stack) {
     if (stack->last->next == NULL) {
