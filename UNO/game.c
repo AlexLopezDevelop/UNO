@@ -88,12 +88,14 @@ int GAME_start(char nameFileBots[]) {
 
     do {
 
-        optionSelected = toupper(CLI_game_first());
-        printf("Selected: %c\n", optionSelected);
+        char a = CLI_game_first();
+        optionSelected = toupper(a);
+
+        printf("%c\n",a);
 
         switch (optionSelected) {
 
-            case 'A':
+            case CLI_GAME_FIRST_SEE_HAND:
 
                 printf("\nA selected\n");
 
@@ -102,7 +104,7 @@ int GAME_start(char nameFileBots[]) {
 
             case CLI_GAME_FIRST_STEAL_CARD:
 
-                printf("\nA selected\n");
+                printf("\nB selected\n");
 
                 break;
         }

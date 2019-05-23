@@ -18,7 +18,7 @@
 
 // Game second options
 #define CLI_GAME_SECOND_PLAY_CARD   1
-#define CLI_GAME_FIRST_STEAL_CARD   2
+#define CLI_GAME_SECOND_STEAL_CARD  2
 
 // Show stats options
 #define CLI_STATS_PLAYER            1
