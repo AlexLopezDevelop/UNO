@@ -34,7 +34,7 @@ int main(int argc, const char * argv[]) {
 
                 case CLI_MENU_PLAY:
 
-                    GAME_start(argv[2]);
+                    GAME_start(argv[1], argv[2]);
 
                     break;
 

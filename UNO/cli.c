@@ -31,10 +31,11 @@ int CLI_menu() {
     return atoi(str_option);
 }
 
-char CLI_game_first() {
+char CLI_game_first(char playerName[]) {
 
     char str_option[5];
 
+    printf("%s Escoge una opción:\n\n", playerName);
     printf("A. Ver mano\n");
     printf("B. Robar carta\n");
     printf("\nOpción: ");
@@ -45,10 +46,11 @@ char CLI_game_first() {
     return str_option[0];
 }
 
-char CLI_game_second() {
+char CLI_game_second(char playerName[]) {
 
     char str_option[5];
 
+    printf("%s Escoge una opción:\n\n", playerName);
     printf("A. Jugar carta\n");
     printf("B. Robar carta\n");
     printf("\nOpción: ");

@@ -27,9 +27,9 @@
 
 int CLI_menu(void); // Start Menu
 
-char CLI_game_first(void); // Options: -Ver mano, -Robar carta
+char CLI_game_first(); // Options: -Ver mano, -Robar carta
 
-char CLI_game_second(void); // Options: -Jugar carta, -Robar carta
+char CLI_game_second(); // Options: -Jugar carta, -Robar carta
 
 int CLI_stats(void);
 

@@ -91,6 +91,42 @@ int FILE_export_bots_config(char nameFile[], GamePlayers * gamePlayers) {
     return 1;
 }
 
+char * FILE_get_player_name(char nameFile[]) {
+
+    // Opening file
+
+    FILE *dataFile = fopen(nameFile, "r");
+
+    if (dataFile == NULL) {
+
+        printf("No se ha podido abrir el archivo %s.\n", nameFile);
+        return "";
+
+    } else {
+
+        char lineFile[MAXCHAR];
+        char playerName[MAXCHAR];
+        int aux = 0, end = 0;
+
+        do {
+
+            // Reading file
+
+            lineFile[strlen(lineFile) - 1] = '\0';
+            fgets(lineFile, MAXCHAR, dataFile);
+
+            // Get player name
+            if (aux == 0) {
+                strcpy(playerName, lineFile);
+                end = 1;
+            }
+
+        } while (end != 1);
+
+        return playerName;
+    }
+}
+
 PlayerStats FILE_export_player_stats(char nameFile[]) {
 
     PlayerStats playerStats;

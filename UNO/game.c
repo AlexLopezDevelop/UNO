@@ -29,15 +29,12 @@ int GAME_deal_cards() {
     for (int i = 0; i < MAXCARDSGAMEDECK; i++) { // Transfer data from aux array to gameStack
 
         PLIST_insert(&gameStack, gameDeck[i]);
-
-        //printf("%s - %d\n", gameDeck[i].color, gameDeck[i].number);
     }
 
     for (int j = 0; j < QUANTITYCARDSPLAYER; j++) { // Quantity cards for player
 
         gamePlayers.player.deck[j] = gameStack.first->next->card;
         PLIST_remove(&gameStack); // Remove card given to player
-        //printf("Player: %s - %d\n", gamePlayers.player.deck[j].color, gamePlayers.player.deck[j].number);
     }
 
     for (int k  = 0; k < gamePlayers.numBots; k++) { // Loop for each bot player
@@ -46,7 +43,6 @@ int GAME_deal_cards() {
 
             gamePlayers.bots[k].deck[l] = gameStack.first->next->card;
             PLIST_remove(&gameStack);
-            //printf("%s: %s - %d\n", gamePlayers.bots[k].name, gamePlayers.bots[k].deck[l].color, gamePlayers.bots[k].deck[l].number);
         }
     }
 }
@@ -101,20 +97,22 @@ int GAME_generate_stacks() {
     GAME_shuffle_main_stack();
 }
 
-int GAME_configuration(char nameFileBots[]) {
+int GAME_configuration(char nameFilePLayer[], char nameFileBots[]) {
 
     if (FILE_export_bots_config(nameFileBots,  &gamePlayers) == 0 ) { // Load bots conf
         return 0;
     }
+
+    stpcpy(gamePlayers.player.name, FILE_get_player_name(nameFilePLayer)); // Add player name
 
     GAME_generate_stacks();
 
     return 1;
 }
 
-int GAME_start(char nameFileBots[]) {
+int GAME_start(char nameFilePLayer[], char nameFileBots[]) {
 
-    if (GAME_configuration(nameFileBots) == 0) {
+    if (GAME_configuration(nameFilePLayer, nameFileBots) == 0) {
         return 0;
     }
 
@@ -122,9 +120,12 @@ int GAME_start(char nameFileBots[]) {
 
     char optionSelected;
 
+    char playerName[MAXCHAR];
+    stpcpy(playerName, gamePlayers.player.name);
+
     do {
 
-        char a = CLI_game_first();
+        char a = CLI_game_first(playerName);
         optionSelected = toupper(a);
 
 
@@ -132,8 +133,7 @@ int GAME_start(char nameFileBots[]) {
 
             case CLI_GAME_FIRST_SEE_HAND:
 
-
-                CLI_game_second();
+                CLI_game_second(playerName);
 
                 break;
 

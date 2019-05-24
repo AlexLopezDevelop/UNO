@@ -19,5 +19,7 @@ PlayerStats FILE_export_player_stats();
 
 int FILE_export_bots_config();
 
+char * FILE_get_player_name();
+
 
 #endif //UNO_FILE_H

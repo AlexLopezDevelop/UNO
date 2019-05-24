@@ -14,6 +14,7 @@
 
 // Struct - Player in game
 typedef struct {
+    char name [MAXCHAR];
     Card deck[MAXDECK];
     int cardsAvailable;
 } Player;
