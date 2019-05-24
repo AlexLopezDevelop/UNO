@@ -25,6 +25,33 @@ GamePlayers gamePlayers;
 // Turns
 char gameTurns[MAXPLAYERSGAME][MAXCHAR];
 int senseOfTurns = 0; // 0: clockwise, 1: counter-clock wise
+int indexTurns = 0;
+
+char optionSelected;
+
+int GAME_player(char playerName[]) {
+
+    char a = CLI_game_first(playerName);
+    optionSelected = toupper(a);
+
+
+    switch (optionSelected) {
+
+        case CLI_GAME_FIRST_SEE_HAND:
+
+            CLI_game_second(playerName);
+
+            break;
+
+
+        case CLI_GAME_FIRST_STEAL_CARD:
+
+            printf("\nB selected\n");
+
+            break;
+    }
+}
+
 
 int GAME_turns() {
 
@@ -36,9 +63,9 @@ int GAME_turns() {
             break;
     }
 
-    for (int i = 0; i < (gamePlayers.numBots + 1); i++) {
+    /*for (int i = 0; i < (gamePlayers.numBots + 1); i++) {
         printf("Name = %s\n", gameTurns[i]);
-    }
+    }*/
 }
 
 int GAME_sort_turns() {
@@ -161,33 +188,37 @@ int GAME_start(char nameFilePLayer[], char nameFileBots[]) {
         return 0;
     }
 
-    char optionSelected;
-
     char playerName[MAXCHAR];
     stpcpy(playerName, gamePlayers.player.name);
 
+    int findTurnBot = 0;
+
     do {
 
-        char a = CLI_game_first(playerName);
-        optionSelected = toupper(a);
+        gameStack.first->next->card; //Top card from stack
 
+        if (strcmp(gamePlayers.player.name, gameTurns[indexTurns]) == 0) { // Player Turn
 
-        switch (optionSelected) {
+            GAME_player(playerName);
 
-            case CLI_GAME_FIRST_SEE_HAND:
+        } else { // Bots turn
 
-                CLI_game_second(playerName);
+            for (int i = 0; i < gamePlayers.numBots && findTurnBot == 0; i++) {
 
-                break;
+                if (strcmp(gamePlayers.bots[i].name, gameTurns[indexTurns]) == 0) { // Bot turn
+                    printf("%s\n", gamePlayers.bots[i].name);
+                    findTurnBot = 1; // Bot turn found
+                }
+            }
 
-
-            case CLI_GAME_FIRST_STEAL_CARD:
-
-                printf("\nB selected\n");
-
-                break;
+            findTurnBot = 0; // Reset for next loop
         }
 
+        indexTurns++; // Next turn
+
+        GAME_turns(); // Change sense of the game (NOT IMPLEMENTED)
+
+        
     } while (optionSelected != 'C');
 
 }

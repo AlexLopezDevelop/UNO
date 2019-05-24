@@ -42,9 +42,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0c40cc86-3124-461b-88a3-d3c49266c4c7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UNO" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/game.c" beforeDir="false" afterPath="$PROJECT_DIR$/game.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game.h" beforeDir="false" afterPath="$PROJECT_DIR$/game.h" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -128,8 +126,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/game.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="154" column="21" selection-start-line="154" selection-start-column="21" selection-end-line="154" selection-end-column="21" />
+            <state relative-caret-position="517">
+              <caret line="219" lean-forward="true" selection-start-line="219" selection-end-line="219" />
               <folding>
                 <element signature="e#47#64#0" expanded="true" />
               </folding>
@@ -281,12 +279,12 @@
       <workItem from="1558634012929" duration="14000" />
       <workItem from="1558634060423" duration="16000" />
       <workItem from="1558634097373" duration="95000" />
-      <workItem from="1558638377380" duration="14933000" />
+      <workItem from="1558638377380" duration="16416000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52548000" />
+    <option name="totallyTimeSpent" value="54031000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -473,8 +471,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/game.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="154" column="21" selection-start-line="154" selection-start-column="21" selection-end-line="154" selection-end-column="21" />
+        <state relative-caret-position="517">
+          <caret line="219" lean-forward="true" selection-start-line="219" selection-end-line="219" />
           <folding>
             <element signature="e#47#64#0" expanded="true" />
           </folding>
