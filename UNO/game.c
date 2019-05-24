@@ -22,6 +22,47 @@ Stack gameStack;
 
 GamePlayers gamePlayers;
 
+// Turns
+char gameTurns[MAXPLAYERSGAME][MAXCHAR];
+int senseOfTurns = 0; // 0: clockwise, 1: counter-clock wise
+
+int GAME_turns() {
+
+    switch (senseOfTurns) {
+        case 0:
+
+            break;
+        case 1:
+            break;
+    }
+
+    for (int i = 0; i < (gamePlayers.numBots + 1); i++) {
+        printf("Name = %s\n", gameTurns[i]);
+    }
+}
+
+int GAME_sort_turns() {
+
+    for (int i = 0; i < gamePlayers.numBots; i++) {
+
+        stpcpy(gameTurns[i], gamePlayers.bots[i].name);
+    }
+
+    stpcpy(gameTurns[gamePlayers.numBots], gamePlayers.player.name);
+
+    char t[MAXCHAR];
+
+    for (int i = 1; i < 4; i++) {
+        for (int j = 1; j < 4; j++) {
+            if (strcmp(gameTurns[j - 1], gameTurns[j]) > 0) {
+                strcpy(t, gameTurns[j - 1]);
+                strcpy(gameTurns[j - 1], gameTurns[j]);
+                strcpy(gameTurns[j], t);
+            }
+        }
+    }
+}
+
 int GAME_deal_cards() {
 
     gameStack = PLIST_create(); // Initialize with phantom node
@@ -107,6 +148,10 @@ int GAME_configuration(char nameFilePLayer[], char nameFileBots[]) {
 
     GAME_generate_stacks();
 
+    GAME_deal_cards();
+
+    GAME_sort_turns();
+
     return 1;
 }
 
@@ -115,8 +160,6 @@ int GAME_start(char nameFilePLayer[], char nameFileBots[]) {
     if (GAME_configuration(nameFilePLayer, nameFileBots) == 0) {
         return 0;
     }
-
-    GAME_deal_cards();
 
     char optionSelected;
 

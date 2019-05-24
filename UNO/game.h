@@ -6,6 +6,7 @@
 #define UNO_GAME_H
 
 #include <stdlib.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include "cli.h"
@@ -15,7 +16,8 @@
 
 #define MAXCARDSGAMEDECK    108
 #define MAXNUMCARDS         15
-#define MAXBOTSGAME         10
+#define MAXPLAYERSGAME      10
+#define MAXBOTSGAME         9
 #define MAXCARDSCOLORS      4
 #define QUANTITYCARDSPLAYER 7
 
