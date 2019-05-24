@@ -30,13 +30,24 @@ int GAME_deal_cards() {
 
         PLIST_insert(&gameStack, gameDeck[i]);
 
+        //printf("%s - %d\n", gameDeck[i].color, gameDeck[i].number);
     }
 
-    for (int i = 0; i < QUANTITYCARDSPLAYER; i++) { // Quantity cards for player
-        
-        printf("%d - %s \n", gameStack.first->next->card.number, gameStack.first->next->card.color);
-        gamePlayers.player.deck[i] = gameStack.first->next->card;
+    for (int j = 0; j < QUANTITYCARDSPLAYER; j++) { // Quantity cards for player
+
+        gamePlayers.player.deck[j] = gameStack.first->next->card;
         PLIST_remove(&gameStack); // Remove card given to player
+        //printf("Player: %s - %d\n", gamePlayers.player.deck[j].color, gamePlayers.player.deck[j].number);
+    }
+
+    for (int k  = 0; k < gamePlayers.numBots; k++) { // Loop for each bot player
+
+        for (int l = 0; l < gamePlayers.bots[k].cardsAvailable; l++) { // Loop for each available cards by bot
+
+            gamePlayers.bots[k].deck[l] = gameStack.first->next->card;
+            PLIST_remove(&gameStack);
+            //printf("%s: %s - %d\n", gamePlayers.bots[k].name, gamePlayers.bots[k].deck[l].color, gamePlayers.bots[k].deck[l].number);
+        }
     }
 }
 
@@ -47,7 +58,7 @@ int GAME_shuffle_main_stack() {
 
     for (int i = 0; i < MAXCARDSGAMEDECK; i++) {
 
-        j = (rand()%MAXCARDSGAMEDECK) + 1;
+        j = (rand()%MAXCARDSGAMEDECK);
         temp = gameDeck[i];
         gameDeck[i] = gameDeck[j];
         gameDeck[j] = temp;
@@ -92,7 +103,7 @@ int GAME_generate_stacks() {
 
 int GAME_configuration(char nameFileBots[]) {
 
-    if (FILE_export_bots_config(nameFileBots, gamePlayers) == 0 ) { // Load bots conf
+    if (FILE_export_bots_config(nameFileBots,  &gamePlayers) == 0 ) { // Load bots conf
         return 0;
     }
 
@@ -116,7 +127,6 @@ int GAME_start(char nameFileBots[]) {
         char a = CLI_game_first();
         optionSelected = toupper(a);
 
-        printf("%c\n",a);
 
         switch (optionSelected) {
 

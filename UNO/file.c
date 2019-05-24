@@ -10,7 +10,7 @@
 #include "game.h"
 
 
-int FILE_export_bots_config(char nameFile[], GamePlayers gamePlayers) {
+int FILE_export_bots_config(char nameFile[], GamePlayers * gamePlayers) {
 
     // Opening file
 
@@ -39,7 +39,7 @@ int FILE_export_bots_config(char nameFile[], GamePlayers gamePlayers) {
 
             if (aux == 0) { // Num of bots
 
-                gamePlayers.numBots = atoi(lineFile);
+                gamePlayers->numBots = atoi(lineFile);
 
             } else {
 
@@ -47,7 +47,7 @@ int FILE_export_bots_config(char nameFile[], GamePlayers gamePlayers) {
 
                     case 1: // Bot name
 
-                        stpcpy(gamePlayers.bots[i].name, lineFile);
+                        stpcpy(gamePlayers->bots[i].name, lineFile);
 
                         break;
 
@@ -56,11 +56,11 @@ int FILE_export_bots_config(char nameFile[], GamePlayers gamePlayers) {
 
                         if (strcmp(lineFile, "Agresivo") == 0) { // Aggressive
 
-                            gamePlayers.bots[i].status = 1;
+                            gamePlayers->bots[i].status = 1;
 
                         } else {
 
-                            gamePlayers.bots[i].status = 0;
+                            gamePlayers->bots[i].status = 0;
                         }
 
                         break;
@@ -68,7 +68,7 @@ int FILE_export_bots_config(char nameFile[], GamePlayers gamePlayers) {
 
                     case 3: // Cards
 
-                        gamePlayers.bots[i].cardsAvailable = atoi(lineFile);
+                        gamePlayers->bots[i].cardsAvailable = atoi(lineFile);
 
                         aux = 0;
                         i++;
