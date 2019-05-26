@@ -56,10 +56,21 @@ int GAME_player(char playerName[]) {
 int GAME_turns() {
 
     switch (senseOfTurns) {
-        case 0:
+        case CLOCKWISE:
+
+            indexTurns++; // Next turn
+
+            if (indexTurns == gamePlayers.numBots) { // Check if last player array
+                indexTurns = 0;
+            }
 
             break;
-        case 1:
+
+
+        case COUNTERCLOCKWISE:
+
+
+
             break;
     }
 
@@ -191,11 +202,13 @@ int GAME_start(char nameFilePLayer[], char nameFileBots[]) {
     char playerName[MAXCHAR];
     stpcpy(playerName, gamePlayers.player.name);
 
+    Card cardInGame;
+    Bot botPlaying;
     int findTurnBot = 0;
 
     do {
 
-        gameStack.first->next->card; //Top card from stack
+        cardInGame = gameStack.first->next->card; //Top card from stack
 
         if (strcmp(gamePlayers.player.name, gameTurns[indexTurns]) == 0) { // Player Turn
 
@@ -206,19 +219,36 @@ int GAME_start(char nameFilePLayer[], char nameFileBots[]) {
             for (int i = 0; i < gamePlayers.numBots && findTurnBot == 0; i++) {
 
                 if (strcmp(gamePlayers.bots[i].name, gameTurns[indexTurns]) == 0) { // Bot turn
-                    printf("%s\n", gamePlayers.bots[i].name);
+
+                    botPlaying = gamePlayers.bots[i];
+
                     findTurnBot = 1; // Bot turn found
                 }
             }
 
+            // Play of the bot --------------------------- TODO: Make a function
+
+            if (botPlaying.status == AGGRSSIVE) {
+
+                for (int i = 0; i < botPlaying.cardsAvailable; i++) {
+
+                    if (botPlaying.deck[i].number == 12 || botPlaying.deck[i].number == 14) { // Check if have +2 or +4
+
+                    }
+                }
+
+            } else {
+
+            }
+
+            // End play of the bot -----------------------
+
             findTurnBot = 0; // Reset for next loop
         }
 
-        indexTurns++; // Next turn
+        GAME_turns(); // Change sense of the game TODO: IMPLEMENT
 
-        GAME_turns(); // Change sense of the game (NOT IMPLEMENTED)
 
-        
-    } while (optionSelected != 'C');
+    } while (optionSelected != 'C'); // TODO: Change infinite loop for endGame flag
 
 }

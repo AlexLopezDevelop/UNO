@@ -45,7 +45,7 @@ int PLIST_remove(Stack * stack) {
 
     stack->first->next = stack->first->next->next;
     free(tmp);
-
+    
     return 1;
 }
 

@@ -21,6 +21,11 @@
 #define MAXCARDSCOLORS      4
 #define QUANTITYCARDSPLAYER 7
 
+#define CLOCKWISE           0
+#define COUNTERCLOCKWISE    1
+
+#define AGGRSSIVE           1
+
 
 typedef struct {
     Bot bots[MAXBOTSGAME]; // Array bots for game
