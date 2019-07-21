@@ -22,6 +22,8 @@ Stack gameStack;
 
 GamePlayers gamePlayers;
 
+Card cardInGame;
+
 // Turns
 char gameTurns[MAXPLAYERSGAME][MAXCHAR];
 int senseOfTurns = 0; // 0: clockwise, 1: counter-clock wise
@@ -29,26 +31,120 @@ int indexTurns = 0;
 
 char optionSelected;
 
+int GAME_remove_card(Player * player, int index) {
+
+    Card deckAux[MAXDECK];
+
+    int n = 0;
+
+    for (int i = 0; i < player->cardsAvailable; i++) {
+
+        if (i == index) {
+
+
+        } else {
+
+            deckAux[n].number = player->deck[i].number;
+            strcpy(deckAux[n].color, player->deck[i].color);
+
+            n++;
+
+        }
+    }
+
+    //Check if the card was deleted
+    /*for (int i = 0; i < n; i++) {
+        printf("%d) Numero: %d - Color: %s \n", i, deckAux[i].number, deckAux[i].color);
+    }*/
+
+    player->deck = deckAux;
+
+}
+
 int GAME_player(char playerName[]) {
 
-    char a = CLI_game_first(playerName);
-    optionSelected = toupper(a);
+    int continueGame = 0;
+
+    while (continueGame == 0) {
 
 
-    switch (optionSelected) {
+        printf("\nCarta en juego: %d - %s \n\n", cardInGame.number, cardInGame.color);
 
-        case CLI_GAME_FIRST_SEE_HAND:
+        char response = CLI_game_first(playerName);
+        optionSelected = toupper(response);
 
-            CLI_game_second(playerName);
+        switch (optionSelected) {
 
-            break;
+            case CLI_GAME_FIRST_SEE_HAND:
+
+                // Print hand
+                for (int i = 0; i < gamePlayers.player.cardsAvailable; i++) {
+                    printf("%d) Numero: %d - Color: %s \n", i, gamePlayers.player.deck[i].number,
+                           &gamePlayers.player.deck[i].color);
+                }
+
+                char response = CLI_game_second(playerName);
+                optionSelected = toupper(response);
+
+                switch (optionSelected) {
+
+                    case CLI_GAME_SECOND_PLAY_CARD:
+
+                        printf("\n ¿Qué carta quieres jugar? ");
+
+                        //User selected card
+                        char str_option[5];
+
+                        fgets(str_option, 5, stdin);
+                        str_option[strlen(str_option) - 1] = '\0';
+
+                        int userCardPlay = atoi(str_option);
 
 
-        case CLI_GAME_FIRST_STEAL_CARD:
+                        //Check if the user can trow
+                        if (cardInGame.number == gamePlayers.player.deck[userCardPlay].number) {
 
-            printf("\nB selected\n");
+                            GAME_remove_card(&gamePlayers.player, userCardPlay);
 
-            break;
+                            PLIST_insert(&gameStack, cardInGame); // Add the card to bottom deckGame
+
+                            cardInGame = gamePlayers.player.deck[userCardPlay]; // Change cardInGame
+
+                            continueGame = 1; //Exit from loop to continue playing
+
+                        } else if (strcmp(cardInGame.color, gamePlayers.player.deck[userCardPlay].color) == 0) {
+
+                            GAME_remove_card(&gamePlayers.player, userCardPlay);
+
+                            PLIST_insert(&gameStack, cardInGame); // Add the card to bottom deckGame
+
+                            cardInGame = gamePlayers.player.deck[userCardPlay];
+
+                            continueGame = 1;
+
+                        } else {
+                            printf("\nEsta carta no se puede jugar\n");
+                        }
+
+                        printf("Num: %d - Color: %s", gameStack.first->card.number, gameStack.first->card.color);
+
+                        break;
+
+                    case CLI_GAME_SECOND_STEAL_CARD:
+                        //TODO: Añadir una carta mas al stack del jugador
+                        break;
+
+                }
+
+                break;
+
+
+            case CLI_GAME_FIRST_STEAL_CARD:
+
+                printf("\nB selected\n");
+
+                break;
+        }
     }
 }
 
@@ -115,6 +211,8 @@ int GAME_deal_cards() {
         gamePlayers.player.deck[j] = gameStack.first->next->card;
         PLIST_remove(&gameStack); // Remove card given to player
     }
+
+    gamePlayers.player.cardsAvailable = QUANTITYCARDSPLAYER; // Set the quantity cards
 
     for (int k  = 0; k < gamePlayers.numBots; k++) { // Loop for each bot player
 
@@ -202,13 +300,12 @@ int GAME_start(char nameFilePLayer[], char nameFileBots[]) {
     char playerName[MAXCHAR];
     stpcpy(playerName, gamePlayers.player.name);
 
-    Card cardInGame;
     Bot botPlaying;
     int findTurnBot = 0;
 
     do {
 
-        cardInGame = gameStack.first->next->card; //Top card from stack
+        cardInGame = gameStack.first->next->card; //Top card from stack TODO: Check if it's a valid card for start
 
         if (strcmp(gamePlayers.player.name, gameTurns[indexTurns]) == 0) { // Player Turn
 

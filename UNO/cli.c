@@ -58,7 +58,7 @@ char CLI_game_second(char playerName[]) {
     fgets(str_option, 5, stdin);
     str_option[strlen(str_option) - 1] = '\0';
 
-    return atoi(str_option);
+    return str_option[0];
 }
 
 int CLI_stats() {

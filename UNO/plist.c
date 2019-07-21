@@ -7,6 +7,7 @@
 //
 
 #include <stdlib.h>
+#include <string.h>
 
 #include "plist.h"
 
@@ -48,8 +49,6 @@ int PLIST_remove(Stack * stack) {
     
     return 1;
 }
-
-
 
 int PLIST_next(Stack * stack) {
     if (stack->last->next == NULL) {
