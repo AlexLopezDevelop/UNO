@@ -16,7 +16,7 @@
 
 #define MAXCARDSGAMEDECK    108
 #define MAXNUMCARDS         15
-#define MAXPLAYERSGAME      10
+#define MAXPLAYERSGAME      4
 #define MAXBOTSGAME         9
 #define MAXCARDSCOLORS      4
 #define QUANTITYCARDSPLAYER 7

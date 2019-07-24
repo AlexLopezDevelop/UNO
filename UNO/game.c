@@ -68,6 +68,29 @@ int GAME_remove_card(Player * player, int index) {
 
 }
 
+int GAME_bot(Bot bot) { //TODO: CHECK IF THE BOT IS TRIGGED
+
+    int noCardFound = 1; // Check if the bot can throw some card
+
+    for (int i = 0; i < bot.cardsAvailable; i++) {
+
+        if (bot.deck[i].number == cardInGame.number ) {
+
+            noCardFound = 0;
+
+        } else if (strcmp(bot.deck[i].color, cardInGame.color) == 0) {
+
+            noCardFound = 0;
+
+        }
+    }
+
+    if (noCardFound == 1) { // TODO: Steel card
+
+    }
+
+}
+
 int GAME_player(char playerName[]) {
 
     int continueGame = 0;
@@ -165,7 +188,7 @@ int GAME_turns() {
 
             indexTurns++; // Next turn
 
-            if (indexTurns == gamePlayers.numBots) { // Check if last player array
+            if (indexTurns == MAXPLAYERSGAME) { // Check if last player array
                 indexTurns = 0;
             }
 
@@ -316,19 +339,13 @@ int GAME_start(char nameFilePLayer[], char nameFileBots[]) {
 
     do {
 
-        for (int i = 0; i < MAXPLAYERSGAME; i++) {
-
-            gameTurns[i];
-
-        }
-
         if (strcmp(gamePlayers.player.name, gameTurns[indexTurns]) == 0) { // Player Turn
 
             GAME_player(playerName);
 
         } else { // Bots turn
 
-            for (int i = 0; i < gamePlayers.numBots && findTurnBot == 0; i++) {
+            for (int i = 0; i < gamePlayers.numBots && findTurnBot == 0; i++) { // Loop for find and get bot info
 
                 if (strcmp(gamePlayers.bots[i].name, gameTurns[indexTurns]) == 0) { // Bot turn
 
@@ -338,7 +355,7 @@ int GAME_start(char nameFilePLayer[], char nameFileBots[]) {
                 }
             }
 
-            // Play of the bot --------------------------- TODO: Make a function
+            GAME_bot(botPlaying);
 
             if (botPlaying.status == AGGRSSIVE) {
 
