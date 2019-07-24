@@ -52,12 +52,19 @@ int GAME_remove_card(Player * player, int index) {
         }
     }
 
-    //Check if the card was deleted
+    //Add auxDeck to player deck
+    for (int i = 0; i < n; i++) {
+        player->deck[i].number = deckAux[i].number;
+        strcpy(player->deck[i].color, deckAux[i].color);
+    }
+
+    player->cardsAvailable = n; // Decrement cards
+
+    //Check new player deck
     /*for (int i = 0; i < n; i++) {
-        printf("%d) Numero: %d - Color: %s \n", i, deckAux[i].number, deckAux[i].color);
+        printf("%d) Numero: %d - Color: %s \n", i, player->deck[i].number, player->deck[i].color);
     }*/
 
-    player->deck = deckAux;
 
 }
 
@@ -104,29 +111,31 @@ int GAME_player(char playerName[]) {
                         //Check if the user can trow
                         if (cardInGame.number == gamePlayers.player.deck[userCardPlay].number) {
 
+                            cardInGame = gamePlayers.player.deck[userCardPlay]; // Change cardInGame
+
                             GAME_remove_card(&gamePlayers.player, userCardPlay);
 
                             PLIST_insert(&gameStack, cardInGame); // Add the card to bottom deckGame
 
-                            cardInGame = gamePlayers.player.deck[userCardPlay]; // Change cardInGame
+                            printf("Hey chnage\n");
+
+
 
                             continueGame = 1; //Exit from loop to continue playing
 
                         } else if (strcmp(cardInGame.color, gamePlayers.player.deck[userCardPlay].color) == 0) {
 
+                            cardInGame = gamePlayers.player.deck[userCardPlay]; // Change cardInGame
+
                             GAME_remove_card(&gamePlayers.player, userCardPlay);
 
                             PLIST_insert(&gameStack, cardInGame); // Add the card to bottom deckGame
-
-                            cardInGame = gamePlayers.player.deck[userCardPlay];
 
                             continueGame = 1;
 
                         } else {
                             printf("\nEsta carta no se puede jugar\n");
                         }
-
-                        printf("Num: %d - Color: %s", gameStack.first->card.number, gameStack.first->card.color);
 
                         break;
 
@@ -186,7 +195,7 @@ int GAME_sort_turns() {
 
     char t[MAXCHAR];
 
-    for (int i = 1; i < 4; i++) {
+    for (int i = 1; i < MAXPLAYERSGAME; i++) {
         for (int j = 1; j < 4; j++) {
             if (strcmp(gameTurns[j - 1], gameTurns[j]) > 0) {
                 strcpy(t, gameTurns[j - 1]);
@@ -303,9 +312,15 @@ int GAME_start(char nameFilePLayer[], char nameFileBots[]) {
     Bot botPlaying;
     int findTurnBot = 0;
 
+    cardInGame = gameStack.first->next->card; //Top card from stack TODO: Check if it's a valid card for start
+
     do {
 
-        cardInGame = gameStack.first->next->card; //Top card from stack TODO: Check if it's a valid card for start
+        for (int i = 0; i < MAXPLAYERSGAME; i++) {
+
+            gameTurns[i];
+
+        }
 
         if (strcmp(gamePlayers.player.name, gameTurns[indexTurns]) == 0) { // Player Turn
 
