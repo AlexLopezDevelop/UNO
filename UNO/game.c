@@ -31,7 +31,44 @@ int indexTurns = 0;
 
 char optionSelected;
 
-int GAME_remove_card(Player * player, int index) {
+int GAME_remove_bot_card(Bot * bot, int index) {
+
+    Card deckAux[MAXDECK];
+
+    int n = 0;
+
+    for (int i = 0; i < bot->cardsAvailable; i++) {
+
+        if (i == index) {
+
+
+        } else {
+
+            deckAux[n].number = bot->deck[i].number;
+            strcpy(deckAux[n].color, bot->deck[i].color);
+
+            n++;
+
+        }
+    }
+
+    //Add auxDeck to player deck
+    for (int i = 0; i < n; i++) {
+        bot->deck[i].number = deckAux[i].number;
+        strcpy(bot->deck[i].color, deckAux[i].color);
+    }
+
+    bot->cardsAvailable = n; // Decrement cards
+
+    //Check new player deck
+    /*for (int i = 0; i < n; i++) {
+        printf("%d) Numero: %d - Color: %s \n", i, player->deck[i].number, player->deck[i].color);
+    }*/
+
+
+}
+
+int GAME_remove_player_card(Player * player, int index) {
 
     Card deckAux[MAXDECK];
 
@@ -68,25 +105,41 @@ int GAME_remove_card(Player * player, int index) {
 
 }
 
-int GAME_bot(Bot bot) { //TODO: CHECK IF THE BOT IS TRIGGED
+int GAME_bot(Bot * bot) { //TODO: CHECK IF THE BOT IS TRIGGED
 
     int noCardFound = 1; // Check if the bot can throw some card
 
-    for (int i = 0; i < bot.cardsAvailable; i++) {
+    for (int i = 0; i < bot->cardsAvailable; i++) {
 
-        if (bot.deck[i].number == cardInGame.number ) {
+        if (bot->deck[i].number == cardInGame.number ) {
+
+            cardInGame = bot->deck[i]; // Replace game card for bot card thrown
+
+            //Remove card form bot deck
+            GAME_remove_bot_card(&bot, i);
+
 
             noCardFound = 0;
 
-        } else if (strcmp(bot.deck[i].color, cardInGame.color) == 0) {
+        } else if (strcmp(bot->deck[i].color, cardInGame.color) == 0) {
+
+            cardInGame = bot->deck[i]; // Replace game card for bot card thrown
+
+            //Remove card form bot deck
+            GAME_remove_bot_card(&bot, i);
 
             noCardFound = 0;
 
         }
     }
 
-    if (noCardFound == 1) { // TODO: Steel card
+    if (noCardFound == 1) {
 
+        bot->cardsAvailable+1; // Increment deck player counter
+
+        bot->deck[bot->cardsAvailable] = gameStack.first->card; // Insert top card from game stack to player deck
+
+        PLIST_remove(&gameStack); // Delete card from game stack
     }
 
 }
@@ -136,7 +189,7 @@ int GAME_player(char playerName[]) {
 
                             cardInGame = gamePlayers.player.deck[userCardPlay]; // Change cardInGame
 
-                            GAME_remove_card(&gamePlayers.player, userCardPlay);
+                            GAME_remove_player_card(&gamePlayers.player, userCardPlay);
 
                             PLIST_insert(&gameStack, cardInGame); // Add the card to bottom deckGame
 
@@ -150,7 +203,7 @@ int GAME_player(char playerName[]) {
 
                             cardInGame = gamePlayers.player.deck[userCardPlay]; // Change cardInGame
 
-                            GAME_remove_card(&gamePlayers.player, userCardPlay);
+                            GAME_remove_player_card(&gamePlayers.player, userCardPlay);
 
                             PLIST_insert(&gameStack, cardInGame); // Add the card to bottom deckGame
 
@@ -355,7 +408,7 @@ int GAME_start(char nameFilePLayer[], char nameFileBots[]) {
                 }
             }
 
-            GAME_bot(botPlaying);
+            GAME_bot(&botPlaying);
 
             if (botPlaying.status == AGGRSSIVE) {
 
