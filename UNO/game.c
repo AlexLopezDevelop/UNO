@@ -105,9 +105,31 @@ int GAME_remove_player_card(Player * player, int index) {
 
 }
 
-int GAME_bot(Bot * bot) { //TODO: CHECK IF THE BOT IS TRIGGED
+int GAME_player_steel_card() {
+
+    gamePlayers.player.cardsAvailable = gamePlayers.player.cardsAvailable + 1; // Increment deck player counter
+
+    gamePlayers.player.deck[gamePlayers.player.cardsAvailable] = gameStack.first->next->card; // Insert top card from game stack to player deck
+
+    PLIST_remove(&gameStack); // Delete card from game stack
+}
+
+int GAME_bot(Bot * bot) {
 
     int noCardFound = 1; // Check if the bot can throw some card
+
+    /*if (botPlaying.status == AGGRSSIVE) {
+
+        for (int i = 0; i < botPlaying.cardsAvailable; i++) {
+
+            if (botPlaying.deck[i].number == 12 || botPlaying.deck[i].number == 14) { // Check if have +2 or +4
+
+            }
+        }
+
+    } else {
+
+    }*/
 
     for (int i = 0; i < bot->cardsAvailable; i++) {
 
@@ -135,9 +157,9 @@ int GAME_bot(Bot * bot) { //TODO: CHECK IF THE BOT IS TRIGGED
 
     if (noCardFound == 1) {
 
-        bot->cardsAvailable+1; // Increment deck player counter
+        bot->cardsAvailable = bot->cardsAvailable + 1; // Increment bot deck counter
 
-        bot->deck[bot->cardsAvailable] = gameStack.first->card; // Insert top card from game stack to player deck
+        bot->deck[bot->cardsAvailable] = gameStack.first->card; // Insert top card from game stack to bot deck
 
         PLIST_remove(&gameStack); // Delete card from game stack
     }
@@ -184,39 +206,38 @@ int GAME_player(char playerName[]) {
                         int userCardPlay = atoi(str_option);
 
 
-                        //Check if the user can trow
+                        //Check if the user can trow TODO: Create function (duplicated content)
                         if (cardInGame.number == gamePlayers.player.deck[userCardPlay].number) {
+
+                            PLIST_insert(&gameStack, cardInGame); // Add the card to bottom deckGame
 
                             cardInGame = gamePlayers.player.deck[userCardPlay]; // Change cardInGame
 
                             GAME_remove_player_card(&gamePlayers.player, userCardPlay);
-
-                            PLIST_insert(&gameStack, cardInGame); // Add the card to bottom deckGame
-
-                            printf("Hey chnage\n");
-
-
 
                             continueGame = 1; //Exit from loop to continue playing
 
                         } else if (strcmp(cardInGame.color, gamePlayers.player.deck[userCardPlay].color) == 0) {
 
+                            PLIST_insert(&gameStack, cardInGame); // Add the card to bottom deckGame
+
                             cardInGame = gamePlayers.player.deck[userCardPlay]; // Change cardInGame
 
                             GAME_remove_player_card(&gamePlayers.player, userCardPlay);
 
-                            PLIST_insert(&gameStack, cardInGame); // Add the card to bottom deckGame
-
                             continueGame = 1;
 
                         } else {
+
                             printf("\nEsta carta no se puede jugar\n");
                         }
 
                         break;
 
                     case CLI_GAME_SECOND_STEAL_CARD:
-                        //TODO: Añadir una carta mas al stack del jugador
+
+                        GAME_player_steel_card();
+
                         break;
 
                 }
@@ -226,7 +247,7 @@ int GAME_player(char playerName[]) {
 
             case CLI_GAME_FIRST_STEAL_CARD:
 
-                printf("\nB selected\n");
+                GAME_player_steel_card();
 
                 break;
         }
@@ -250,7 +271,7 @@ int GAME_turns() {
 
         case COUNTERCLOCKWISE:
 
-
+            // TODO: Change game direction
 
             break;
     }
@@ -388,7 +409,26 @@ int GAME_start(char nameFilePLayer[], char nameFileBots[]) {
     Bot botPlaying;
     int findTurnBot = 0;
 
-    cardInGame = gameStack.first->next->card; //Top card from stack TODO: Check if it's a valid card for start
+    int validCard = 0;
+
+    while (validCard == 0) {
+
+        if (gameStack.first->next->card.number >= 0 &&
+            gameStack.first->next->card.number <= 9) { // Check if it's a valid card for start
+
+            cardInGame = gameStack.first->next->card; //Top card from stack
+
+            validCard = 1; // Exit loop
+
+        } else { // No valid card
+
+            PLIST_insert(&gameStack, gameStack.first->next->card); // Add card to bottom game stack
+
+            PLIST_remove(&gameStack); // Remove card
+
+        }
+
+    }
 
     do {
 
@@ -409,19 +449,6 @@ int GAME_start(char nameFilePLayer[], char nameFileBots[]) {
             }
 
             GAME_bot(&botPlaying);
-
-            if (botPlaying.status == AGGRSSIVE) {
-
-                for (int i = 0; i < botPlaying.cardsAvailable; i++) {
-
-                    if (botPlaying.deck[i].number == 12 || botPlaying.deck[i].number == 14) { // Check if have +2 or +4
-
-                    }
-                }
-
-            } else {
-
-            }
 
             // End play of the bot -----------------------
 

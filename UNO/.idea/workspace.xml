@@ -42,8 +42,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0c40cc86-3124-461b-88a3-d3c49266c4c7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/UNO.dir/cli.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/UNO.dir/cli.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/UNO.dir/file.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/UNO.dir/file.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cli.h" beforeDir="false" afterPath="$PROJECT_DIR$/cli.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/UNO.dir/game.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/UNO.dir/game.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/UNO" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/UNO" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game.c" beforeDir="false" afterPath="$PROJECT_DIR$/game.c" afterDir="false" />
     </list>
@@ -60,26 +61,23 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/plist.h">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/game.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+            <state relative-caret-position="609">
+              <caret line="221" column="100" selection-start-line="221" selection-start-column="100" selection-end-line="221" selection-end-column="100" />
               <folding>
-                <element signature="e#88#106#0" expanded="true" />
+                <element signature="e#47#64#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/game.c">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cli.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="128" column="42" selection-start-line="128" selection-start-column="42" selection-end-line="128" selection-end-column="42" />
-              <folding>
-                <element signature="e#47#64#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="300">
+              <caret line="20" column="38" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -120,8 +118,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/plist.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="43" column="4" selection-start-line="43" selection-start-column="4" selection-end-line="43" selection-end-column="4" />
+            <state relative-caret-position="480">
+              <caret line="47" column="14" lean-forward="true" selection-start-line="47" selection-start-column="14" selection-end-line="47" selection-end-column="14" />
               <folding>
                 <element signature="e#125#144#0" expanded="true" />
               </folding>
@@ -176,7 +174,6 @@
       <find>playerStats</find>
       <find>CLI_game_first</find>
       <find>PLIST_remove_card</find>
-      <find>cardInGame</find>
       <find>CLI_game_second</find>
       <find>gameStack</find>
       <find>GAME_Pla</find>
@@ -191,6 +188,15 @@
       <find>gameDeck</find>
       <find>GAME_remove_card</find>
       <find>GAME_bot</find>
+      <find>cardInGame =</find>
+      <find>printf</find>
+      <find>cardInGame = gameStack.first-&gt;next-&gt;card;</find>
+      <find>gameStack.first-&gt;next-&gt;card;</find>
+      <find>PLIST_remove</find>
+      <find>+ 1</find>
+      <find>cardInGame</find>
+      <find>insert</find>
+      <find>remove</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/../</dir>
@@ -212,10 +218,10 @@
         <option value="$PROJECT_DIR$/file.c" />
         <option value="$PROJECT_DIR$/card.h" />
         <option value="$PROJECT_DIR$/file.h" />
-        <option value="$PROJECT_DIR$/cli.h" />
         <option value="$PROJECT_DIR$/cli.c" />
         <option value="$PROJECT_DIR$/plist.h" />
         <option value="$PROJECT_DIR$/game.h" />
+        <option value="$PROJECT_DIR$/cli.h" />
         <option value="$PROJECT_DIR$/plist.c" />
         <option value="$PROJECT_DIR$/game.c" />
       </list>
@@ -223,10 +229,10 @@
   </component>
   <component name="OCFindUsagesOptions" text="false" ivars="false" properties="false" derivedClasses="false" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-186" />
-    <option name="y" value="-1057" />
-    <option name="width" value="1920" />
-    <option name="height" value="1057" />
+    <option name="x" value="243" />
+    <option name="y" value="151" />
+    <option name="width" value="1232" />
+    <option name="height" value="771" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -234,6 +240,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -250,7 +257,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -314,12 +320,15 @@
       <workItem from="1563914614763" duration="3684000" />
       <workItem from="1564002832846" duration="47000" />
       <workItem from="1564003002326" duration="1990000" />
-      <workItem from="1564075530748" duration="1500000" />
+      <workItem from="1564075530748" duration="2000000" />
+      <workItem from="1564220501174" duration="3403000" />
+      <workItem from="1564227940615" duration="1238000" />
+      <workItem from="1564236947112" duration="2385000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102110000" />
+    <option name="totallyTimeSpent" value="109636000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -331,22 +340,22 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-186" y="-1057" width="1920" height="1057" extended-state="6" />
+    <frame x="38" y="23" width="1642" height="1027" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.09637912" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.099375" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.29740933" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.13582888" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32941177" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
       <window_info anchor="bottom" id="TeamCity" order="8" weight="0.32941177" />
-      <window_info anchor="bottom" id="Messages" order="9" weight="0.32642487" />
+      <window_info anchor="bottom" id="Messages" order="9" weight="0.3262032" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32941177" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="12" weight="0.32941177" />
@@ -422,10 +431,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cli.h">
+    <entry file="file://$PROJECT_DIR$/plist.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="31" column="20" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="20" />
+        <state relative-caret-position="225">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="e#88#106#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="22" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="22" />
+          <folding>
+            <element signature="e#86#105#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bot.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+          <folding>
+            <element signature="e#85#102#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/player.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
         </state>
       </provider>
     </entry>
@@ -460,57 +499,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plist.h">
+    <entry file="file://$PROJECT_DIR$/cli.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
-          <folding>
-            <element signature="e#88#106#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="300">
+          <caret line="20" column="38" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plist.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="43" column="4" selection-start-line="43" selection-start-column="4" selection-end-line="43" selection-end-column="4" />
+        <state relative-caret-position="480">
+          <caret line="47" column="14" lean-forward="true" selection-start-line="47" selection-start-column="14" selection-end-line="47" selection-end-column="14" />
           <folding>
             <element signature="e#125#144#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/player.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bot.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
-          <folding>
-            <element signature="e#85#102#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/game.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="22" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="22" />
-          <folding>
-            <element signature="e#86#105#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/game.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="128" column="42" selection-start-line="128" selection-start-column="42" selection-end-line="128" selection-end-column="42" />
+        <state relative-caret-position="609">
+          <caret line="221" column="100" selection-start-line="221" selection-start-column="100" selection-end-line="221" selection-end-column="100" />
           <folding>
             <element signature="e#47#64#0" expanded="true" />
           </folding>
