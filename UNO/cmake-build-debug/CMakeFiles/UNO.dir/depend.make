@@ -38,7 +38,9 @@ CMakeFiles/UNO.dir/plist.c.o: ../plist.c
 CMakeFiles/UNO.dir/plist.c.o: ../plist.h
 CMakeFiles/UNO.dir/plist.c.o: ../stack.h
 
+CMakeFiles/UNO.dir/stats.c.o: ../bot.h
 CMakeFiles/UNO.dir/stats.c.o: ../card.h
+CMakeFiles/UNO.dir/stats.c.o: ../file.h
 CMakeFiles/UNO.dir/stats.c.o: ../player.h
 CMakeFiles/UNO.dir/stats.c.o: ../stats.c
 CMakeFiles/UNO.dir/stats.c.o: ../stats.h

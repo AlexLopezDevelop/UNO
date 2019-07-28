@@ -23,6 +23,7 @@ int main(int argc, const char * argv[]) {
     if (argc >= MAXARGUMENTS) { // Check if are 3 arguments or more
 
         PlayerStats playerStats;
+        BotsStats botsStats;
 
         int option, optionStats;
 
@@ -48,7 +49,8 @@ int main(int argc, const char * argv[]) {
                             STATS_show_player_stats(playerStats);
                             break;
                         case 2:
-
+                            botsStats = FILE_export_bots_stats();
+                            STATS_show_bots_stats(botsStats);
                             break;
                         case 3:
                             // Back to menu
@@ -59,6 +61,10 @@ int main(int argc, const char * argv[]) {
 
 
                 case CLI_MENU_EXIT:
+
+                    FILE_clean_bots_stats();
+
+                    printf("Programa finalizado.");
 
                     break;
 

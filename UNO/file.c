@@ -9,6 +9,23 @@
 #include "file.h"
 #include "game.h"
 
+int FILE_clean_bots_stats() {
+    // Reset bot stats file
+
+    FILE * fb;
+    fb = fopen ("botsStats.txt","w");
+
+    int i = 0;
+
+    while(i < 50){
+
+        fprintf(fb, "");
+
+        i++;
+    }
+
+
+}
 
 int FILE_export_bots_config(char nameFile[], GamePlayers * gamePlayers) {
 
@@ -125,6 +142,76 @@ char * FILE_get_player_name(char nameFile[]) {
 
         return playerName;
     }
+}
+
+BotsStats FILE_export_bots_stats() {
+
+    BotsStats botsStats;
+
+    FILE *dataFile = fopen(PATHBOTSSTATS, "r");
+
+    if (dataFile == NULL) {
+
+        printf("No se ha podido abrir el archivo %s.\n", PATHBOTSSTATS);
+        return botsStats;
+
+    } else {
+
+        char lineFile[MAXCHAR];
+
+        int aux = 0;
+        int i = 0;
+
+        do {
+
+            // Reading file
+
+            lineFile[strlen(lineFile) - 1] = '\0';
+            fgets(lineFile, MAXCHAR, dataFile);
+
+            // Adding data to the structure
+
+            switch (aux) {
+                case 0:
+                    strcpy(botsStats.bots[i].name, lineFile);
+                    break;
+                case 1:
+                    botsStats.bots[i].wonGames = atoi(lineFile);
+                    break;
+                case 2:
+                    botsStats.bots[i].lostGames = atoi(lineFile);
+                    break;
+                case 3:
+                    botsStats.bots[i].passiveGamesWon = atoi(lineFile);
+                    break;
+                case 4:
+                    botsStats.bots[i].passiveGamesLost = atoi(lineFile);
+                    break;
+                case 5:
+                    botsStats.bots[i].agressiveGamesWon = atoi(lineFile);
+                    break;
+                case 6:
+                    botsStats.bots[i].agressiveGamesLost = atoi(lineFile);
+                    i++;
+                    aux = -1;
+                    break;
+                default:
+
+                    break;
+            }
+
+            aux++;
+
+        } while (!feof(dataFile));
+
+        fclose(dataFile);
+
+        botsStats.maxBots = i; // Add total bots
+
+    }
+
+    return botsStats;
+
 }
 
 PlayerStats FILE_export_player_stats(char nameFile[]) {

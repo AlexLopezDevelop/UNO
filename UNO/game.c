@@ -893,6 +893,99 @@ int GAME_start(char nameFilePLayer[], char nameFileBots[]) {
 
             printf("\n¡Has ganado la partida!\n");
 
+            // Safe stats
+            PlayerStats playerStats = FILE_export_player_stats();
+
+            playerStats.wonGames = playerStats.wonGames + 1; // Add win to player
+
+            BotsStats botsStats = FILE_export_bots_stats();
+
+            for (int i = 0; i < botsStats.maxBots; i++) {
+                botsStats.bots[i].lostGames = botsStats.bots[i].lostGames +1;
+                if (gamePlayers.bots[i].status == AGGRSSIVE) {
+                    botsStats.bots[i].agressiveGamesLost = botsStats.bots[i].passiveGamesLost + 1;
+                } else {
+                    botsStats.bots[i].passiveGamesLost = botsStats.bots[i].passiveGamesLost + 1;
+                }
+            }
+
+            // Add data to playerStats
+            FILE * fp;
+            fp = fopen ("playerData.txt","w");
+
+            int aux = 0;
+            int i = 0;
+
+            int totalLines = playerStats.cardsGamesSize + 3;
+
+            while (i < totalLines) {
+                switch (aux) {
+                    case 0:
+                        fprintf (fp, playerStats.name);
+                        break;
+                    case 1:
+                        fprintf (fp, playerStats.wonGames);
+                        break;
+                    case 2:
+                        fprintf (fp, playerStats.lostGames);
+                        break;
+                    default:
+                        fprintf (fp, playerStats.cardsGames[i]);
+                        i++;
+                        break;
+                }
+
+                aux++;
+            }
+
+            fprintf (fp, gamePlayers.player.cardsAvailable); // Add cards en these game
+
+            fclose (fp);
+
+            // Add data to botsStats
+            FILE * fb;
+            fb = fopen ("botsStats.txt","w");
+
+            aux = 0;
+            i = 0;
+
+            totalLines = botsStats.maxBots; // Each bot have 7 data
+
+            while(i < totalLines){
+                switch (aux) {
+                    case 0:
+                        fprintf (fb, botsStats.bots[i].name);
+                        break;
+                    case 1:
+                        fprintf (fb, botsStats.bots[i].wonGames);
+                        break;
+                    case 2:
+                        fprintf (fb, botsStats.bots[i].lostGames);
+                        break;
+                    case 3:
+                        fprintf (fb, botsStats.bots[i].passiveGamesWon);
+                        break;
+                    case 4:
+                        fprintf (fb, botsStats.bots[i].passiveGamesLost);
+                        break;
+                    case 5:
+                        fprintf (fb, botsStats.bots[i].agressiveGamesWon);
+                        break;
+                    case 6:
+                        fprintf (fb, botsStats.bots[i].agressiveGamesLost);
+                        i++;
+                        aux = -1;
+                        break;
+                    default:
+
+                        break;
+                }
+
+                aux++;
+            }
+
+            fclose (fb);
+
             endGame == 1;
 
         } else {
@@ -902,6 +995,33 @@ int GAME_start(char nameFilePLayer[], char nameFileBots[]) {
                if (gamePlayers.bots[i].cardsAvailable == 0) {
 
                     printf("%s ha ganado la partida. Te quedaban %d cartas en mano.\n", gamePlayers.bots[i].name, gamePlayers.player.cardsAvailable);
+
+                   // Safe stats
+                   PlayerStats playerStats = FILE_export_player_stats("playerData.txt");
+
+                   playerStats.wonGames = playerStats.lostGames + 1; // Add win to player
+
+                   BotsStats botsStats = FILE_export_bots_stats();
+
+                   botsStats.bots[i].wonGames = botsStats.bots[i].wonGames +1;
+                   if (gamePlayers.bots[i].status == AGGRSSIVE) {
+                       botsStats.bots[i].agressiveGamesWon = botsStats.bots[i].passiveGamesWon + 1;
+                   } else {
+                       botsStats.bots[i].passiveGamesWon = botsStats.bots[i].passiveGamesWon + 1;
+                   }
+
+                   for (int j = 0; j < gamePlayers.numBots; j++) { // Other bots
+
+                       if (i != j) {
+                           botsStats.bots[j].lostGames = botsStats.bots[j].lostGames +1;
+                           if (gamePlayers.bots[j].status == AGGRSSIVE) {
+                               botsStats.bots[j].agressiveGamesLost = botsStats.bots[j].passiveGamesLost + 1;
+                           } else {
+                               botsStats.bots[j].passiveGamesLost = botsStats.bots[j].passiveGamesLost + 1;
+                           }
+                       }
+
+                   }
 
                     endGame == 1;
 

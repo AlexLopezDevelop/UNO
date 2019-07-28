@@ -12,6 +12,7 @@
 #include "cli.h"
 #include "player.h"
 #include "file.h"
+#include "bot.h"
 
 
 #define MAXCARDSGAMEDECK    108

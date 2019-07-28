@@ -9,6 +9,7 @@
 #include "card.h"
 #include "file.h"
 
+
 #define MAXCHAR     100
 #define MAXDECK     50
 
@@ -19,12 +20,6 @@ typedef struct {
     int cardsAvailable;
     int status; // 0: Normal, 1: Aggressive
 } Bot;
-
-/*typedef struct {
-    char name[MAXCHAR];
-    int status[MAXCHAR];
-    int cards;
-} BotStats;*/
 
 
 #endif //UNO_BOT_H
