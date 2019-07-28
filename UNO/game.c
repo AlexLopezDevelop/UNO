@@ -127,27 +127,82 @@ int GAME_player_steel_card() {
 int GAME_bot(Bot * bot) { // TODO: Create a function in thrown action (Duplicated content)
 
     int cardFound = 0; // Check if the bot can throw some card
+    int countYellow = 0;
+    int countGreen = 0;
+    int countRed = 0;
+    int countBlue = 0;
+    char maxColor[15];
 
-    /*if (botPlaying.status == AGGRSSIVE) {
 
-        for (int i = 0; i < botPlaying.cardsAvailable; i++) {
+    for (int i = 0; i < bot->cardsAvailable; i++) { // Count colors
 
-            if (botPlaying.deck[i].number == 12 || botPlaying.deck[i].number == 14) { // Check if have +2 or +4
+        if (strcmp(bot->deck[i].color, "amarillo") == 0) {
 
-            }
+        } else if (strcmp(bot->deck[i].color, "amarillo") == 0) {
+
+            countYellow++;
+
+        } else if (strcmp(bot->deck[i].color, "verde") == 0) {
+
+            countGreen++;
+
+        } else if (strcmp(bot->deck[i].color, "rojo") == 0) {
+
+            countRed++;
+
+        } else if (strcmp(bot->deck[i].color, "azul") == 0) {
+
+            countBlue++;
+
         }
 
-    } else {
+    }
 
-    }*/
+    if (countYellow > countGreen) {
+        if(countYellow > countRed) {
+            if (countYellow > countBlue) {
+                strcpy(maxColor, "amarillo");
+            } else {
+                strcpy(maxColor, "azul");
+            }
+        } else {
+            if (countRed > countBlue) {
+                strcpy(maxColor, "rojo");
+            } else {
+                //blue
+            }
+        }
+    } else {
+        if (countGreen > countRed) {
+            if (countGreen > countBlue) {
+                strcpy(maxColor, "verde");
+            } else {
+                strcpy(maxColor, "azul");
+            }
+        } else {
+            if (countRed > countBlue) {
+                strcpy(maxColor, "rojo");
+            } else {
+                strcpy(maxColor, "azul");
+            }
+        }
+    }
+
 
     for (int i = 0; i < bot->cardsAvailable && cardFound == 0; i++) { // Check if have 0
 
         if (bot->deck[i].number == 0 ) {
 
+            if (cardInGame.number = 13 || cardInGame.number == 14) { // Check if it's card change color
+
+                strcpy(cardInGame.color, ""); // Reset color to put in the deck
+
+            }
+
             PLIST_insert(&gameStack, cardInGame); // Add the card to bottom deckGame
 
             cardInGame = bot->deck[i]; // Replace game card for bot card thrown
+
 
             //Remove card form bot deck
             GAME_remove_bot_card(&bot, i);
@@ -164,6 +219,12 @@ int GAME_bot(Bot * bot) { // TODO: Create a function in thrown action (Duplicate
         for (int j = 0; j < bot->cardsAvailable && cardFound == 0; j++) {
 
             if (strcmp(bot->deck[j].color, cardInGame.color) == 0) {
+
+                if (cardInGame.number = 13 || cardInGame.number == 14) { // Check if it's card change color
+
+                    strcpy(cardInGame.color, ""); // Reset color to put in the deck
+
+                }
 
                 PLIST_insert(&gameStack, cardInGame); // Add the card to bottom deckGame
 
@@ -185,10 +246,17 @@ int GAME_bot(Bot * bot) { // TODO: Create a function in thrown action (Duplicate
 
             for (int l = 0; l < bot->cardsAvailable && cardFound == 0; l++) {
 
-                if (bot->deck[l].number == 10 || bot->deck[l].number == 11 ||
-                    bot->deck[l].number == 13 || bot->deck[l].number == 14) {
+                if (bot->deck[l].number == 13 || bot->deck[l].number == 14) {
+
+                    if (cardInGame.number = 13 || cardInGame.number == 14) { // Check if it's card change color
+
+                        strcpy(cardInGame.color, ""); // Reset color to put in the deck
+
+                    }
 
                     PLIST_insert(&gameStack, cardInGame); // Add the card to bottom deckGame
+
+                    strcpy(bot->deck[l].color, maxColor); // Add color
 
                     cardInGame = bot->deck[l]; // Replace game card for bot card thrown
 
@@ -207,6 +275,12 @@ int GAME_bot(Bot * bot) { // TODO: Create a function in thrown action (Duplicate
         for (int k = 0; k < bot->cardsAvailable && cardFound == 0; k++) {
 
             if (bot->deck[k].number == cardInGame.number ) {
+
+                if (cardInGame.number = 13 || cardInGame.number == 14) { // Check if it's card change color
+
+                    strcpy(cardInGame.color, ""); // Reset color to put in the deck
+
+                }
 
                 PLIST_insert(&gameStack, cardInGame); // Add the card to bottom deckGame
 
@@ -229,10 +303,17 @@ int GAME_bot(Bot * bot) { // TODO: Create a function in thrown action (Duplicate
 
             for (int l = 0; l < bot->cardsAvailable && cardFound == 0; l++) {
 
-                if (bot->deck[l].number == 10 || bot->deck[l].number == 11 ||
-                    bot->deck[l].number == 13 || bot->deck[l].number == 14) {
+                if (bot->deck[l].number == 13 || bot->deck[l].number == 14) {
+
+                    if (cardInGame.number = 13 || cardInGame.number == 14) { // Check if it's card change color
+
+                        strcpy(cardInGame.color, ""); // Reset color to put in the deck
+
+                    }
 
                     PLIST_insert(&gameStack, cardInGame); // Add the card to bottom deckGame
+
+                    strcpy(bot->deck[l].color, maxColor); // Add color
 
                     cardInGame = bot->deck[l]; // Replace game card for bot card thrown
 
@@ -253,6 +334,12 @@ int GAME_bot(Bot * bot) { // TODO: Create a function in thrown action (Duplicate
         // Check if the stolen card can be thrown
         if (bot->deck[bot->cardsAvailable].number == cardInGame.number) {
 
+            if (cardInGame.number = 13 || cardInGame.number == 14) { // Check if it's card change color
+
+                strcpy(cardInGame.color, ""); // Reset color to put in the deck
+
+            }
+
 
             PLIST_insert(&gameStack, cardInGame); // Add the card to bottom deckGame
 
@@ -263,6 +350,12 @@ int GAME_bot(Bot * bot) { // TODO: Create a function in thrown action (Duplicate
 
 
         } else if (strcmp(bot->deck[bot->cardsAvailable].color, cardInGame.color)) {
+
+            if (cardInGame.number = 13 || cardInGame.number == 14) { // Check if it's card change color
+
+                strcpy(cardInGame.color, ""); // Reset color to put in the deck
+
+            }
 
             PLIST_insert(&gameStack, cardInGame); // Add the card to bottom deckGame
 
@@ -275,9 +368,17 @@ int GAME_bot(Bot * bot) { // TODO: Create a function in thrown action (Duplicate
 
             if (bot->status == AGGRSSIVE) {
 
-                if (bot->deck[bot->cardsAvailable].number == 10 || bot->deck[bot->cardsAvailable].number == 11 || bot->deck[bot->cardsAvailable].number == 13 || bot->deck[bot->cardsAvailable].number == 14 ) {
+                if (bot->deck[bot->cardsAvailable].number == 13 || bot->deck[bot->cardsAvailable].number == 14) {
+
+                    if (cardInGame.number = 13 || cardInGame.number == 14) { // Check if it's card change color
+
+                        strcpy(cardInGame.color, ""); // Reset color to put in the deck
+
+                    }
 
                     PLIST_insert(&gameStack, cardInGame); // Add the card to bottom deckGame
+
+                    strcpy(bot->deck[bot->cardsAvailable].color, maxColor); // Add color
 
                     cardInGame = bot->deck[bot->cardsAvailable]; // Replace game card for bot card thrown
 
@@ -290,7 +391,6 @@ int GAME_bot(Bot * bot) { // TODO: Create a function in thrown action (Duplicate
 
         }
 
-        // TODO: Lanzar si puede
     }
 
 }
@@ -313,6 +413,11 @@ int GAME_player(char playerName[]) {
                 // Print hand
                 for (int i = 0; i < gamePlayers.player.cardsAvailable; i++) {
                     if (gamePlayers.player.deck[i].number == cardInGame.number || strcmp(gamePlayers.player.deck[i].color, cardInGame.color) == 0) { // Show card available to play
+
+                        printf("%d) Numero: %d - Color: %s   *\n", i, gamePlayers.player.deck[i].number,
+                               &gamePlayers.player.deck[i].color);
+
+                    } else if (gamePlayers.player.deck[i].number == 13 || gamePlayers.player.deck[i].number == 14) { // Change color, +4
 
                         printf("%d) Numero: %d - Color: %s   *\n", i, gamePlayers.player.deck[i].number,
                                &gamePlayers.player.deck[i].color);
@@ -345,6 +450,12 @@ int GAME_player(char playerName[]) {
                         //Check if the user can trow TODO: Create function (duplicated content)
                         if (cardInGame.number == gamePlayers.player.deck[userCardPlay].number) {
 
+                            if (cardInGame.number = 13 || cardInGame.number == 14) { // Check if it's card change color
+
+                                strcpy(cardInGame.color, ""); // Reset color to put in the deck
+
+                            }
+
                             PLIST_insert(&gameStack, cardInGame); // Add the card to bottom deckGame
 
                             cardInGame = gamePlayers.player.deck[userCardPlay]; // Change cardInGame
@@ -355,6 +466,12 @@ int GAME_player(char playerName[]) {
 
                         } else if (strcmp(cardInGame.color, gamePlayers.player.deck[userCardPlay].color) == 0) {
 
+                            if (cardInGame.number = 13 || cardInGame.number == 14) { // Check if it's card change color
+
+                                strcpy(cardInGame.color, ""); // Reset color to put in the deck
+
+                            }
+
                             PLIST_insert(&gameStack, cardInGame); // Add the card to bottom deckGame
 
                             cardInGame = gamePlayers.player.deck[userCardPlay]; // Change cardInGame
@@ -363,7 +480,42 @@ int GAME_player(char playerName[]) {
 
                             continueGame = 1;
 
-                        } else {
+                        } else if (gamePlayers.player.deck[userCardPlay].number == 13 || gamePlayers.player.deck[userCardPlay].color == 14) { // Change color, +4
+
+                            int correctColor = 0;
+
+                            while (correctColor == 0) {
+
+                            printf("\n¿Que color quiere cambiar?\n");
+
+                            //User selected card
+                            char str_option[15];
+
+                            fgets(str_option, 5, stdin);
+                            str_option[strlen(str_option) - 1] = '\0';
+
+                            for (int i = 0; str_option[i]; i++) { // Lower case
+                                str_option[i] = tolower(str_option[i]);
+                            }
+
+                            for (int j = 0; j < 4; j++) {
+
+                                if (strcmp(str_option, colors[j]) == 0) {
+
+                                    strcpy(gamePlayers.player.deck[userCardPlay].color,
+                                           str_option); // Add color to change color card
+
+                                    correctColor = 1;
+
+                                } else {
+
+                                    printf("\nColor incorrecto\n");
+
+                                }
+                            }
+                        }
+
+                        }else {
 
                             printf("\nEsta carta no se puede jugar\n");
                         }
@@ -373,6 +525,136 @@ int GAME_player(char playerName[]) {
                     case CLI_GAME_SECOND_STEAL_CARD:
 
                         GAME_player_steel_card();
+
+                        int end = 0;
+
+                        // Check if can throw the steal card
+                        if (cardInGame.number == gamePlayers.player.deck[gamePlayers.player.cardsAvailable].number){
+
+                             // TODO: Create a function (duplicated content)
+                            while (end == 0) {
+
+                                printf("\nSe ha robado un %d %s. ¿Deseas jugarlo? [s/n]\n",
+                                       gamePlayers.player.deck[gamePlayers.player.cardsAvailable].number,
+                                       gamePlayers.player.deck[gamePlayers.player.cardsAvailable].color);
+
+                                fgets(str_option, 5, stdin);
+                                str_option[strlen(str_option) - 1] = '\0';
+
+                                if (strcmp(tolower(str_option[0]), "s") == 0) { // throw steal card
+
+                                    if (cardInGame.number = 13 || cardInGame.number == 14) { // Check if it's card change color
+
+                                        strcpy(cardInGame.color, ""); // Reset color to put in the deck
+
+                                    }
+
+                                    PLIST_insert(&gameStack, cardInGame); // Add the card to bottom deckGame
+
+                                    cardInGame = gamePlayers.player.deck[gamePlayers.player.cardsAvailable]; // Change cardInGame
+
+                                    GAME_remove_player_card(&gamePlayers.player, gamePlayers.player.cardsAvailable);
+
+                                    continueGame = 1;
+
+                                    end = 1;
+
+                                } else if (strcmp(tolower(str_option[0]), "n") == 0) {
+
+                                    end = 1;
+
+                                } else {
+
+                                    printf("\nRespuesta incorrecta\n");
+
+                                }
+                            }
+
+                        } else if (strcmp(cardInGame.color, gamePlayers.player.deck[gamePlayers.player.cardsAvailable].color)) {
+
+                            while (end == 0) {
+
+                                printf("\nSe ha robado un %d %s. ¿Deseas jugarlo? [s/n]\n",
+                                       gamePlayers.player.deck[gamePlayers.player.cardsAvailable].number,
+                                       gamePlayers.player.deck[gamePlayers.player.cardsAvailable].color);
+
+                                fgets(str_option, 5, stdin);
+                                str_option[strlen(str_option) - 1] = '\0';
+
+                                if (strcmp(tolower(str_option[0]), "s") == 0) { // throw steal card
+
+                                    if (cardInGame.number = 13 || cardInGame.number == 14) { // Check if it's card change color
+
+                                        strcpy(cardInGame.color, ""); // Reset color to put in the deck
+
+                                    }
+
+                                    PLIST_insert(&gameStack, cardInGame); // Add the card to bottom deckGame
+
+                                    cardInGame = gamePlayers.player.deck[gamePlayers.player.cardsAvailable]; // Change cardInGame
+
+                                    GAME_remove_player_card(&gamePlayers.player, gamePlayers.player.cardsAvailable);
+
+                                    continueGame = 1;
+
+                                    end = 1;
+
+                                } else if (strcmp(tolower(str_option[0]), "n") == 0) {
+
+                                    end = 1;
+
+                                } else {
+
+                                    printf("\nRespuesta incorrecta\n");
+
+                                }
+                            }
+
+                        } else if (gamePlayers.player.deck[gamePlayers.player.cardsAvailable].number == 13 || gamePlayers.player.deck[gamePlayers.player.cardsAvailable].number == 14) {
+
+                            while (end == 0) {
+
+                                printf("\nSe ha robado un %d %s. ¿Deseas jugarlo? [s/n]\n",
+                                       gamePlayers.player.deck[gamePlayers.player.cardsAvailable].number,
+                                       gamePlayers.player.deck[gamePlayers.player.cardsAvailable].color);
+
+                                fgets(str_option, 5, stdin);
+                                str_option[strlen(str_option) - 1] = '\0';
+
+                                if (strcmp(tolower(str_option[0]), "s") == 0) { // throw steal card
+
+                                    if (cardInGame.number = 13 || cardInGame.number == 14) { // Check if it's card change color
+
+                                        strcpy(cardInGame.color, ""); // Reset color to put in the deck
+
+                                    }
+
+                                    PLIST_insert(&gameStack, cardInGame); // Add the card to bottom deckGame
+
+                                    cardInGame = gamePlayers.player.deck[gamePlayers.player.cardsAvailable]; // Change cardInGame
+
+                                    GAME_remove_player_card(&gamePlayers.player, gamePlayers.player.cardsAvailable);
+
+                                    continueGame = 1;
+
+                                    end = 1;
+
+                                } else if (strcmp(tolower(str_option[0]), "n") == 0) {
+
+                                    end = 1;
+
+                                } else {
+
+                                    printf("\nRespuesta incorrecta\n");
+
+                                }
+                            }
+
+                        } else {
+
+                            printf("\nSe ha robado un %d %s. No se puede jugar\n", gamePlayers.player.deck[gamePlayers.player.cardsAvailable].number, gamePlayers.player.deck[gamePlayers.player.cardsAvailable].color);
+
+                        }
 
                         break;
 
@@ -396,10 +678,10 @@ int GAME_turns() {
     switch (senseOfTurns) {
         case CLOCKWISE:
 
-            indexTurns++; // Next turn
-
-            if (indexTurns == MAXPLAYERSGAME) { // Check if last player array
+            if (indexTurns == MAXPLAYERSGAME) { // Check if it's the last player of array
                 indexTurns = 0;
+            } else {
+                indexTurns++; // Next turn
             }
 
             break;
@@ -407,7 +689,11 @@ int GAME_turns() {
 
         case COUNTERCLOCKWISE:
 
-            // TODO: Change game direction
+            if (indexTurns == 0) { // Check if it's the first player of array
+                indexTurns = MAXPLAYERSGAME;
+            } else {
+                indexTurns--; // Next turn
+            }
 
             break;
     }
@@ -546,6 +832,7 @@ int GAME_start(char nameFilePLayer[], char nameFileBots[]) {
     int findTurnBot = 0;
 
     int validCard = 0;
+    int endGame = 0;
 
     while (validCard == 0) {
 
@@ -601,50 +888,89 @@ int GAME_start(char nameFilePLayer[], char nameFileBots[]) {
             findTurnBot = 0; // Reset for next loop
         }
 
-        GAME_turns(); // Change sense of the game TODO: IMPLEMENT
+        // Check if some player dont have cards == end game
+        if (gamePlayers.player.cardsAvailable == 0) {
 
-        if (cardInGame.number == 12 || cardInGame.number == 14) { // Check if the card in game it's +2 or +4
+            printf("\n¡Has ganado la partida!\n");
 
-            if (strcmp(gamePlayers.player.name, gameTurns[indexTurns]) == 0) { // Player turn
+            endGame == 1;
 
-                if (cardInGame.number == 12) { // +2
+        } else {
 
-                    for (int i = 0; i < 2; i++) {
+            for (int i = 0; i < gamePlayers.numBots && endGame == 0; i++) {
 
-                        GAME_player_steel_card;
+               if (gamePlayers.bots[i].cardsAvailable == 0) {
 
-                    }
+                    printf("%s ha ganado la partida. Te quedaban %d cartas en mano.\n", gamePlayers.bots[i].name, gamePlayers.player.cardsAvailable);
 
-                } else { // +4
-
-                    for (int i = 0; i < 4; i++) {
-
-                        GAME_player_steel_card;
-
-                    }
+                    endGame == 1;
 
                 }
 
+            }
 
-            } else { // Bot turn
+        }
 
-                for (int i = 0; i < gamePlayers.numBots; i++) {
+        if (endGame == 0) {
 
-                    if (strcmp(gamePlayers.bots[i].name, gameTurns[indexTurns]) == 0) { // Bot turn found
+            if (cardInGame.number == 10) { // change sense
 
-                        if (cardInGame.number == 12) { // +2
+                if (senseOfTurns == 0) {
 
-                            for (int i = 0; i < 2; i++) {
+                    senseOfTurns = 1;
 
-                                GAME_bot_steel_card(&gamePlayers.bots[i]);
+                } else {
 
-                            }
+                    senseOfTurns = 0;
+                }
+            }
 
-                        } else { // +4
+            GAME_turns(); // Change sense of the game TODO: IMPLEMENT
 
-                            for (int i = 0; i < 4; i++) {
+            if (cardInGame.number == 12 || cardInGame.number == 14) { // Check if the card in game it's +2 or +4
 
-                                GAME_bot_steel_card(&gamePlayers.bots[i]);
+                if (strcmp(gamePlayers.player.name, gameTurns[indexTurns]) == 0) { // Player turn
+
+                    if (cardInGame.number == 12) { // +2
+
+                        for (int i = 0; i < 2; i++) {
+
+                            GAME_player_steel_card;
+
+                        }
+
+                    } else { // +4
+
+                        for (int i = 0; i < 4; i++) {
+
+                            GAME_player_steel_card;
+
+                        }
+
+                    }
+
+
+                } else { // Bot turn
+
+                    for (int i = 0; i < gamePlayers.numBots; i++) {
+
+                        if (strcmp(gamePlayers.bots[i].name, gameTurns[indexTurns]) == 0) { // Bot turn found
+
+                            if (cardInGame.number == 12) { // +2
+
+                                for (int i = 0; i < 2; i++) {
+
+                                    GAME_bot_steel_card(&gamePlayers.bots[i]);
+
+                                }
+
+                            } else { // +4
+
+                                for (int i = 0; i < 4; i++) {
+
+                                    GAME_bot_steel_card(&gamePlayers.bots[i]);
+
+                                }
 
                             }
 
@@ -654,27 +980,25 @@ int GAME_start(char nameFilePLayer[], char nameFileBots[]) {
 
                 }
 
-            }
+            } else if (cardInGame.number == 10) { // Check if the card in game it's block
 
-        } else if (cardInGame.number == 10) { // Check if the card in game it's block
+                if (strcmp(gameTurns[indexTurns], gamePlayers.player.name) == 0) { // Player blocked
 
-            if (strcmp(gameTurns[indexTurns], gamePlayers.player.name) == 0) { // Player blocked
+                    printf("Has sido bloqueado\n\n");
 
-                printf("Has sido bloqueado\n\n");
+                    indexTurns++; // Next turn
 
-                indexTurns++; // Next turn
+                    if (indexTurns == MAXPLAYERSGAME) { // Check if last player array
+                        indexTurns = 0;
+                    }
 
-                if (indexTurns == MAXPLAYERSGAME) { // Check if last player array
-                    indexTurns = 0;
                 }
 
             }
 
-
-
         }
 
 
-    } while (optionSelected != 'C'); // TODO: Change infinite loop for endGame flag
+    } while (endGame == 0);
 
 }
