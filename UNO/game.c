@@ -29,6 +29,7 @@ char gameTurns[MAXPLAYERSGAME][MAXCHAR];
 int senseOfTurns = 0; // 0: clockwise, 1: counter-clock wise
 int indexTurns = 0;
 
+
 char optionSelected;
 
 int GAME_remove_bot_card(Bot * bot, int index) {
@@ -105,6 +106,15 @@ int GAME_remove_player_card(Player * player, int index) {
 
 }
 
+int GAME_bot_steel_card(Bot * bot) {
+
+    bot->cardsAvailable = bot->cardsAvailable + 1; // Increment bot deck counter
+
+    bot->deck[bot->cardsAvailable] = gameStack.first->card; // Insert top card from game stack to bot deck
+
+    PLIST_remove(&gameStack); // Delete card from game stack
+}
+
 int GAME_player_steel_card() {
 
     gamePlayers.player.cardsAvailable = gamePlayers.player.cardsAvailable + 1; // Increment deck player counter
@@ -114,9 +124,9 @@ int GAME_player_steel_card() {
     PLIST_remove(&gameStack); // Delete card from game stack
 }
 
-int GAME_bot(Bot * bot) {
+int GAME_bot(Bot * bot) { // TODO: Create a function in thrown action (Duplicated content)
 
-    int noCardFound = 1; // Check if the bot can throw some card
+    int cardFound = 0; // Check if the bot can throw some card
 
     /*if (botPlaying.status == AGGRSSIVE) {
 
@@ -131,37 +141,156 @@ int GAME_bot(Bot * bot) {
 
     }*/
 
-    for (int i = 0; i < bot->cardsAvailable; i++) {
+    for (int i = 0; i < bot->cardsAvailable && cardFound == 0; i++) { // Check if have 0
 
-        if (bot->deck[i].number == cardInGame.number ) {
+        if (bot->deck[i].number == 0 ) {
 
-            cardInGame = bot->deck[i]; // Replace game card for bot card thrown
-
-            //Remove card form bot deck
-            GAME_remove_bot_card(&bot, i);
-
-
-            noCardFound = 0;
-
-        } else if (strcmp(bot->deck[i].color, cardInGame.color) == 0) {
+            PLIST_insert(&gameStack, cardInGame); // Add the card to bottom deckGame
 
             cardInGame = bot->deck[i]; // Replace game card for bot card thrown
 
             //Remove card form bot deck
             GAME_remove_bot_card(&bot, i);
 
-            noCardFound = 0;
+
+            cardFound = 1;
+
+        }
+
+    }
+
+    if (cardFound == 0) { // Now check if have the same color
+
+        for (int j = 0; j < bot->cardsAvailable && cardFound == 0; j++) {
+
+            if (strcmp(bot->deck[j].color, cardInGame.color) == 0) {
+
+                PLIST_insert(&gameStack, cardInGame); // Add the card to bottom deckGame
+
+                cardInGame = bot->deck[j]; // Replace game card for bot card thrown
+
+                //Remove card form bot deck
+                GAME_remove_bot_card(&bot, j);
+
+                cardFound = 1;
+
+            }
 
         }
     }
 
-    if (noCardFound == 1) {
+    if (cardFound == 0) { // Agressive thrown joker after check colors
 
-        bot->cardsAvailable = bot->cardsAvailable + 1; // Increment bot deck counter
+        if (bot->status == AGGRSSIVE) {
 
-        bot->deck[bot->cardsAvailable] = gameStack.first->card; // Insert top card from game stack to bot deck
+            for (int l = 0; l < bot->cardsAvailable && cardFound == 0; l++) {
 
-        PLIST_remove(&gameStack); // Delete card from game stack
+                if (bot->deck[l].number == 10 || bot->deck[l].number == 11 ||
+                    bot->deck[l].number == 13 || bot->deck[l].number == 14) {
+
+                    PLIST_insert(&gameStack, cardInGame); // Add the card to bottom deckGame
+
+                    cardInGame = bot->deck[l]; // Replace game card for bot card thrown
+
+                    //Remove card form bot deck
+                    GAME_remove_bot_card(&bot, l);
+
+                    cardFound = 1;
+
+                }
+            }
+        }
+    }
+
+    if (cardFound == 0) { // Now check if have the same number
+
+        for (int k = 0; k < bot->cardsAvailable && cardFound == 0; k++) {
+
+            if (bot->deck[k].number == cardInGame.number ) {
+
+                PLIST_insert(&gameStack, cardInGame); // Add the card to bottom deckGame
+
+                cardInGame = bot->deck[k]; // Replace game card for bot card thrown
+
+                //Remove card form bot deck
+                GAME_remove_bot_card(&bot, k);
+
+
+                cardFound = 1;
+
+            }
+
+        }
+    }
+
+    if (bot->status != AGGRSSIVE) { // Agressive joker checked before
+
+        if (cardFound == 0) { // Play some joker card
+
+            for (int l = 0; l < bot->cardsAvailable && cardFound == 0; l++) {
+
+                if (bot->deck[l].number == 10 || bot->deck[l].number == 11 ||
+                    bot->deck[l].number == 13 || bot->deck[l].number == 14) {
+
+                    PLIST_insert(&gameStack, cardInGame); // Add the card to bottom deckGame
+
+                    cardInGame = bot->deck[l]; // Replace game card for bot card thrown
+
+                    //Remove card form bot deck
+                    GAME_remove_bot_card(&bot, l);
+
+                    cardFound = 1;
+
+                }
+            }
+        }
+    }
+
+    if (cardFound == 0) { // Steel card if no have card
+
+        GAME_bot_steel_card(&bot);
+
+        // Check if the stolen card can be thrown
+        if (bot->deck[bot->cardsAvailable].number == cardInGame.number) {
+
+
+            PLIST_insert(&gameStack, cardInGame); // Add the card to bottom deckGame
+
+            cardInGame = bot->deck[bot->cardsAvailable]; // Replace game card for bot card thrown
+
+            //Remove card form bot deck
+            GAME_remove_bot_card(&bot, bot->cardsAvailable);
+
+
+        } else if (strcmp(bot->deck[bot->cardsAvailable].color, cardInGame.color)) {
+
+            PLIST_insert(&gameStack, cardInGame); // Add the card to bottom deckGame
+
+            cardInGame = bot->deck[bot->cardsAvailable]; // Replace game card for bot card thrown
+
+            //Remove card form bot deck
+            GAME_remove_bot_card(&bot, bot->cardsAvailable);
+
+        } else { // Check if it's agressive & can thrown joker card
+
+            if (bot->status == AGGRSSIVE) {
+
+                if (bot->deck[bot->cardsAvailable].number == 10 || bot->deck[bot->cardsAvailable].number == 11 || bot->deck[bot->cardsAvailable].number == 13 || bot->deck[bot->cardsAvailable].number == 14 ) {
+
+                    PLIST_insert(&gameStack, cardInGame); // Add the card to bottom deckGame
+
+                    cardInGame = bot->deck[bot->cardsAvailable]; // Replace game card for bot card thrown
+
+                    //Remove card form bot deck
+                    GAME_remove_bot_card(&bot, bot->cardsAvailable);
+
+                }
+
+            }
+
+        }
+
+        // TODO: Lanzar si puede
     }
 
 }
@@ -171,7 +300,6 @@ int GAME_player(char playerName[]) {
     int continueGame = 0;
 
     while (continueGame == 0) {
-
 
         printf("\nCarta en juego: %d - %s \n\n", cardInGame.number, cardInGame.color);
 
@@ -184,8 +312,16 @@ int GAME_player(char playerName[]) {
 
                 // Print hand
                 for (int i = 0; i < gamePlayers.player.cardsAvailable; i++) {
-                    printf("%d) Numero: %d - Color: %s \n", i, gamePlayers.player.deck[i].number,
-                           &gamePlayers.player.deck[i].color);
+                    if (gamePlayers.player.deck[i].number == cardInGame.number || strcmp(gamePlayers.player.deck[i].color, cardInGame.color) == 0) { // Show card available to play
+
+                        printf("%d) Numero: %d - Color: %s   *\n", i, gamePlayers.player.deck[i].number,
+                               &gamePlayers.player.deck[i].color);
+
+                    } else {
+
+                        printf("%d) Numero: %d - Color: %s \n", i, gamePlayers.player.deck[i].number,
+                               &gamePlayers.player.deck[i].color);
+                    }
                 }
 
                 char response = CLI_game_second(playerName);
@@ -288,7 +424,7 @@ int GAME_sort_turns() {
         stpcpy(gameTurns[i], gamePlayers.bots[i].name);
     }
 
-    stpcpy(gameTurns[gamePlayers.numBots], gamePlayers.player.name);
+    stpcpy(gameTurns[MAXPLAYERSGAME-1], gamePlayers.player.name);
 
     char t[MAXCHAR];
 
@@ -432,6 +568,16 @@ int GAME_start(char nameFilePLayer[], char nameFileBots[]) {
 
     do {
 
+        for (int i  = 0; i < MAXPLAYERSGAME; i++) {
+            if (indexTurns == i) {
+                printf("%s  V\n", gameTurns[i]);
+            } else {
+                printf("%s\n", gameTurns[i]);
+            }
+        }
+
+        printf("--------------\n");
+
         if (strcmp(gamePlayers.player.name, gameTurns[indexTurns]) == 0) { // Player Turn
 
             GAME_player(playerName);
@@ -456,6 +602,77 @@ int GAME_start(char nameFilePLayer[], char nameFileBots[]) {
         }
 
         GAME_turns(); // Change sense of the game TODO: IMPLEMENT
+
+        if (cardInGame.number == 12 || cardInGame.number == 14) { // Check if the card in game it's +2 or +4
+
+            if (strcmp(gamePlayers.player.name, gameTurns[indexTurns]) == 0) { // Player turn
+
+                if (cardInGame.number == 12) { // +2
+
+                    for (int i = 0; i < 2; i++) {
+
+                        GAME_player_steel_card;
+
+                    }
+
+                } else { // +4
+
+                    for (int i = 0; i < 4; i++) {
+
+                        GAME_player_steel_card;
+
+                    }
+
+                }
+
+
+            } else { // Bot turn
+
+                for (int i = 0; i < gamePlayers.numBots; i++) {
+
+                    if (strcmp(gamePlayers.bots[i].name, gameTurns[indexTurns]) == 0) { // Bot turn found
+
+                        if (cardInGame.number == 12) { // +2
+
+                            for (int i = 0; i < 2; i++) {
+
+                                GAME_bot_steel_card(&gamePlayers.bots[i]);
+
+                            }
+
+                        } else { // +4
+
+                            for (int i = 0; i < 4; i++) {
+
+                                GAME_bot_steel_card(&gamePlayers.bots[i]);
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        } else if (cardInGame.number == 10) { // Check if the card in game it's block
+
+            if (strcmp(gameTurns[indexTurns], gamePlayers.player.name) == 0) { // Player blocked
+
+                printf("Has sido bloqueado\n\n");
+
+                indexTurns++; // Next turn
+
+                if (indexTurns == MAXPLAYERSGAME) { // Check if last player array
+                    indexTurns = 0;
+                }
+
+            }
+
+
+
+        }
 
 
     } while (optionSelected != 'C'); // TODO: Change infinite loop for endGame flag
